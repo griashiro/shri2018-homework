@@ -31,11 +31,7 @@ const createCard = (cardData) => {
     markAsNoImage(card)
   }
 
-  if (cardData.description) {
-    addDescription(card, cardData)
-  }
-
-  // TODO: Добавить контейнер для кнопок и кнопки
+  addAdditionalContent(card, cardData)
 
   return card
 }
@@ -52,8 +48,32 @@ const addImage = (card, cardData) => {
   card.appendChild(div)
 }
 
+const addAdditionalContent = (card, cardData) => {
+  const div = createBlock('card__additional-content')
+
+  if (cardData.description) {
+    addDescription(div, cardData)
+  }
+
+  addButtons(div)
+
+  card.appendChild(div)
+}
+
 const addDescription = (card, cardData) => {
   card.appendChild(createBlock('card__description', cardData.description))
+}
+
+const addButtons = (container) => {
+  const content = createBlock('card__buttons')
+
+  content.appendChild(
+    createBlock('card__dots', '<svg><use xlink:href="#s-dots"/></svg>'))
+
+  content.appendChild(
+    createBlock('card__heart', '<svg><use xlink:href="#s-heart"/></svg>'))
+
+  container.appendChild(content)
 }
 
 const markAsNoImage = (card) => {
