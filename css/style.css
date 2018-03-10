@@ -52,6 +52,23 @@
   width: 100%;
 }
 
+/* Size S No Image */
+.card_no-image .card__title-container {
+  max-height: none;
+}
+
+.card_no-image .card__pane {
+  display: flex;
+}
+
+.card_no-image .card__channel {
+  margin-right: auto;
+}
+
+.card_no-image .card__dots {
+  margin-right: 18px;
+}
+
 /* Size M */
 .card_size_m {
   grid-column: span 3;
@@ -123,9 +140,4 @@
 .card_size_l .card__pane {
   display: flex;
   justify-content: space-between;
-}
-
-/* Other */
-.card_no-image .card__title-container {
-  max-height: none;
 }
