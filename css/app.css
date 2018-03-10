@@ -166,7 +166,8 @@ body {
     height: 100%;
 }
 
-.door-riddle__button {
+.door-riddle__button,
+.stairs-riddle__button {
     width: 64px;
     height: 64px;
     border-radius: 64px;
@@ -179,4 +180,52 @@ body {
 
 .door-riddle__button_pressed {
     background-color: #F3E5D9;
+}
+
+.stairs-riddle__button {
+    transition-property: height, background-color;
+    transition-duration: .3s;
+}
+
+.stairs-riddle__button_pressed {
+    height: 100%;
+}
+
+.stairs-riddle__right-position {
+    background-color: #FFC503;
+}
+
+.stairs-riddle {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+}
+
+.stairs-riddle__container {
+    display: flex;
+    justify-content: space-around;
+    height: calc(50vh - 33px - 56px);
+
+    transition: height .3s;
+    will-change: height;
+}
+
+.stairs-riddle__container:first-child {
+    align-items: flex-end;
+}
+
+.stairs-riddle__container_lock {
+    display: flex;
+    padding: 20px;
+}
+
+.lock {
+    display: flex;
+    justify-content: center;
+}
+
+.lock__picture {
+    width: 64px;
+    height: 64px;
 }
