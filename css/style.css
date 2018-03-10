@@ -12,11 +12,11 @@
   grid-template-columns: repeat(6, 1fr);
   grid-column-gap: 16px;
   grid-row-gap: 32px;
+  grid-auto-flow: dense;
 }
 
 .card {
   position: relative;
-  background: #abc;
   font-family: 'YS Text', sans-serif;
 }
 
@@ -152,4 +152,25 @@
 .card_size_l .card__pane {
   display: flex;
   justify-content: space-between;
+}
+
+
+@media (max-width: 1200px) {
+  .card_size_s {
+    grid-column: span 3;
+  }
+
+  .card_size_m {
+    grid-column: span 6;
+  }
+
+  .card_size_l {
+    display: initial;
+  }
+}
+
+@media (max-width: 700px) {
+  .card_size_s {
+    grid-column: span 6;
+  }
 }
