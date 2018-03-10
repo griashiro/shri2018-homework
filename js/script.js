@@ -23,25 +23,16 @@ const createDocumentFragment = (dataJSON) => {
 
 const createCard = (cardData) => {
   const card = createBlock(`card card_size_${cardData.size}`)
+  addTitle(card, cardData)
 
-  if (isNoImageCard(cardData)) {
-    card.className += ' card_no-image'
-  }
-
-  const div = createBlock('card__title-container')
-  div.appendChild(createBlock('card__title', cardData.title))
-
-  card.appendChild(div)
-
-    if (cardData.image) {
-    const div = createBlock('card__picture')
-    div.appendChild(createPicture(cardData.image))
-
-    card.appendChild(div)
+  if (cardData.image) {
+    addImage(card, cardData)
+  } else {
+    markAsNoImage(card)
   }
 
   if (cardData.description) {
-    card.appendChild(createBlock('card__description', cardData.description))
+    addDescription(card, cardData)
   }
 
   // TODO: Добавить контейнер для кнопок и кнопки
@@ -49,19 +40,38 @@ const createCard = (cardData) => {
   return card
 }
 
-const isNoImageCard = (cardData) => {
-  return cardData.description && !cardData.image
+const addTitle = (card, cardData) => {
+  const div = createBlock('card__title-container')
+  div.appendChild(createBlock('card__title', cardData.title))
+  card.appendChild(div)
+}
+
+const addImage = (card, cardData) => {
+  const div = createBlock('card__picture')
+  div.appendChild(createPicture(cardData.image))
+  card.appendChild(div)
+}
+
+const addDescription = (card, cardData) => {
+  card.appendChild(createBlock('card__description', cardData.description))
+}
+
+const markAsNoImage = (card) => {
+  card.className += ' card_no-image'
 }
 
 const createBlock = (className, text = '') => {
   const div = document.createElement('div')
+  
   div.className = className
   div.innerHTML = text
+
   return div
 }
 
 const createPicture = (src) => {
   const img = document.createElement('img')
+
   img.src = src
   img.srcset = getSrcSet(src)
   img.alt = 'Изображение для карточки'
