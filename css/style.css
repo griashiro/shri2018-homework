@@ -31,7 +31,12 @@
   line-height: 23px;
 }
 
+.card__picture {
+  margin-top: 8px;
+}
+
 .card__description {
+  margin-top: 8px;
   font-size: 14px;
   line-height: 20px;
 }
@@ -72,6 +77,7 @@
 
 .card_no-image .card__pane {
   display: flex;
+  margin-top: 9px;
 }
 
 .card_no-image .card__channel {
@@ -113,6 +119,7 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  margin-left: 8px;
 }
 
 /* Size L */
@@ -129,7 +136,7 @@
 }
 
 .card_size_l .card__title {
-
+  margin: 0 16px;
 }
 
 .card_size_l .card__picture {
@@ -147,6 +154,8 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+
+  margin: 0 16px;
 }
 
 .card_size_l .card__pane {
