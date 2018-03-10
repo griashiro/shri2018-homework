@@ -27,7 +27,9 @@ const createCard = (item) => {
 
   if (item.image) {
     card.appendChild(createPictureBlock('card__picture', item.image))
-  } else {
+  }
+  
+  if (item.description) {
     card.appendChild(createBlock('card__description', item.description))
   }
 
