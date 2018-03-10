@@ -63,14 +63,31 @@
 /* Size L */
 .card_size_l {
   grid-column: span 6;
+
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-rows: auto auto auto;
+}
+
+.card_size_l .card__title-container {
+  grid-column: 5 / 7;
+  grid-row: 1 / 2;
 }
 
 .card_size_l .card__title {
 
 }
 
-.card_size_l .card__description {
+.card_size_l .card__picture {
+  grid-area: 1 / 1 / 4 / 5;
+}
 
+.card_size_l .card__picture img {
+  width: 100%;
+}
+
+.card_size_l .card__description {
+  grid-column: 5 / 7;
 }
 
 .card_no-image .card__title-container {
