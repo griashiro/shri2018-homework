@@ -25,6 +25,10 @@
   height: 16px;
 }
 
+.card__title-container {
+  z-index: 1;
+}
+
 .card__title {
   font-weight: bold;
   font-size: 19px;
@@ -33,6 +37,10 @@
 
 .card__picture {
   margin-top: 8px;
+}
+
+.card__picture:hover {
+  opacity: .9;
 }
 
 .card__description {
