@@ -11,10 +11,6 @@
   background: #abc;
 }
 
-.card.card_no-image .card__title-container {
-  max-height: none;
-}
-
 .card__title {
   font: bold 19px/23px 'YS Text', sans-serif;
 }
@@ -46,8 +42,13 @@
   grid-column: span 3;
 }
 
-.card_size_m .card__title {
+.card_size_m .card__title-container {
+  position: relative;
+  max-height: 46px;
+}
 
+.card_size_m .card__title {
+  background-color: #fff;
 }
 
 .card_size_m .card__picture img {
@@ -70,4 +71,8 @@
 
 .card_size_l .card__description {
 
+}
+
+.card_no-image .card__title-container {
+  max-height: none;
 }
