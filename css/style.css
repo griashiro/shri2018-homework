@@ -20,3 +20,11 @@
 .card_size_l {
   grid-column: span 6;
 }
+
+.card__title {
+  font: bold 19px/23px 'YS Text', sans-serif;
+}
+
+.card__description {
+  font: 14px/20px 'YS Text', sans-serif;
+}
