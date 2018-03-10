@@ -9,6 +9,7 @@
 .card {
   position: relative;
   background: #abc;
+  font-family: 'YS Text', sans-serif;
 }
 
 .card svg {
@@ -17,11 +18,20 @@
 }
 
 .card__title {
-  font: bold 19px/23px 'YS Text', sans-serif;
+  font-weight: bold;
+  font-size: 19px;
+  line-height: 23px;
 }
 
 .card__description {
-  font: 14px/20px 'YS Text', sans-serif;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.card__channel {
+  font-weight: bold;
+  font-size: 14px;
+  line-height: 16px;
 }
 
 /* Size S */
@@ -69,7 +79,7 @@
   overflow: hidden;
 }
 
-.card_size_m .card__buttons {
+.card_size_m .card__pane {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -110,7 +120,7 @@
   justify-content: space-between;
 }
 
-.card_size_l .card__buttons {
+.card_size_l .card__pane {
   display: flex;
   justify-content: space-between;
 }

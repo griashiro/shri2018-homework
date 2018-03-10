@@ -23,10 +23,10 @@ const createDocumentFragment = (dataJSON) => {
 
 const createCard = (cardData) => {
   const card = createBlock(`card card_size_${cardData.size}`)
-  addTitle(card, cardData)
+  addTitle(card, cardData.title)
 
   if (cardData.image) {
-    addImage(card, cardData)
+    addImage(card, cardData.image, cardData.size)
   } else {
     markAsNoImage(card)
   }
@@ -36,48 +36,60 @@ const createCard = (cardData) => {
   return card
 }
 
-const addTitle = (card, cardData) => {
-  const div = createBlock('card__title-container')
-  div.appendChild(createBlock('card__title', cardData.title))
-  card.appendChild(div)
-}
-
-const addImage = (card, cardData) => {
-  const div = createBlock('card__picture')
-  div.appendChild(createPicture(cardData.image, cardData.size))
-  card.appendChild(div)
-}
-
 const addAdditionalContent = (card, cardData) => {
   const div = createBlock('card__additional-content')
 
   if (cardData.description) {
-    addDescription(div, cardData)
+    addDescription(div, cardData.description)
   }
 
-  addButtons(div)
+  addPane(div, cardData)
 
   card.appendChild(div)
 }
 
-const addDescription = (card, cardData) => {
-  card.appendChild(createBlock('card__description', cardData.description))
+const addPane = (elem, cardData) => {
+  const pane = createBlock('card__pane')
+
+  if (cardData.channelName) {
+    addChannel(pane, cardData.channelName)
+  }
+
+  addButtons(pane)
+
+  elem.appendChild(pane)
 }
 
-const addButtons = (container) => {
-  const content = createBlock('card__buttons')
-
-  content.appendChild(
+const addButtons = (elem) => {
+  elem.appendChild(
     createBlock('card__dots', '<svg><use xlink:href="#s-dots"/></svg>'))
 
-  content.appendChild(
+  elem.appendChild(
     createBlock('card__heart', '<svg><use xlink:href="#s-heart"/></svg>'))
-
-  container.appendChild(content)
 }
 
-const markAsNoImage = (card) => {
-  card.className += ' card_no-image'
+const addTitle = (elem, title) => {
+  const div = createBlock('card__title-container')
+  div.appendChild(createBlock('card__title', title))
+  elem.appendChild(div)
+}
+
+const addImage = (elem, src, imageSize) => {
+  const div = createBlock('card__picture')
+  div.appendChild(createPicture(src, imageSize))
+  elem.appendChild(div)
+}
+
+const addDescription = (elem, description) => {
+  elem.appendChild(createBlock('card__description', description))
+}
+
+const addChannel = (elem, channelName) => {
+  elem.appendChild(createBlock('card__channel', channelName))
+}
+
+const markAsNoImage = (elem) => {
+  elem.className += ' card_no-image'
 }
 
 const createBlock = (className, text = '') => {
