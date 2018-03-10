@@ -14,28 +14,43 @@ const renderMockData = (dataJSON) => {
 const createDocumentFragment = (dataJSON) => {
   const fragment = document.createDocumentFragment()
 
-  dataJSON.map((item) => {
-    fragment.appendChild(createCard(item))
+  dataJSON.map((cardData) => {
+    fragment.appendChild(createCard(cardData))
   })
 
   return fragment
 }
 
-const createCard = (item) => {
-  const card = createBlock(`card card_size_${item.size}`)
-  card.appendChild(createBlock('card__title', item.title))
+const createCard = (cardData) => {
+  const card = createBlock(`card card_size_${cardData.size}`)
 
-  if (item.image) {
-    card.appendChild(createPictureBlock('card__picture', item.image))
+  if (isNoImageCard(cardData)) {
+    card.className += ' card_no-image'
   }
-  
-  if (item.description) {
-    card.appendChild(createBlock('card__description', item.description))
+
+  const div = createBlock('card__title-container')
+  div.appendChild(createBlock('card__title', cardData.title))
+
+  card.appendChild(div)
+
+    if (cardData.image) {
+    const div = createBlock('card__picture')
+    div.appendChild(createPicture(cardData.image))
+
+    card.appendChild(div)
+  }
+
+  if (cardData.description) {
+    card.appendChild(createBlock('card__description', cardData.description))
   }
 
   // TODO: Добавить контейнер для кнопок и кнопки
 
   return card
+}
+
+const isNoImageCard = (cardData) => {
+  return cardData.description && !cardData.image
 }
 
 const createBlock = (className, text = '') => {
@@ -45,10 +60,18 @@ const createBlock = (className, text = '') => {
   return div
 }
 
-const createPictureBlock = (className, src) => {
+const createPicture = (src) => {
   const img = document.createElement('img')
   img.src = src
+  img.srcset = getSrcSet(src)
   img.alt = 'Изображение для карточки'
 
-  return createBlock(className).appendChild(img)
+  return img
+}
+
+const getSrcSet = (src) => {
+  src = src.split('.')
+  const fileName = src[0]
+  const extension = src[1]
+  return `${fileName}@2x.${extension} 2x, ${fileName}@3x.${extension} 3x`
 }
