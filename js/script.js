@@ -7,7 +7,8 @@ fetch(DATA_URL)
   .catch((err) => alert('Не удалось загрузить data.json\n' + err))
 
 const renderMockData = (dataJSON) => {
-  document.body.appendChild(createDocumentFragment(dataJSON))
+  const main = document.getElementById('main')
+  main.appendChild(createDocumentFragment(dataJSON))
 }
 
 const createDocumentFragment = (dataJSON) => {
