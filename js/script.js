@@ -48,7 +48,7 @@ const addTitle = (card, cardData) => {
 
 const addImage = (card, cardData) => {
   const div = createBlock('card__picture')
-  div.appendChild(createPicture(cardData.image))
+  div.appendChild(createPicture(cardData.image, cardData.size))
   card.appendChild(div)
 }
 
@@ -62,26 +62,43 @@ const markAsNoImage = (card) => {
 
 const createBlock = (className, text = '') => {
   const div = document.createElement('div')
-  
+
   div.className = className
   div.innerHTML = text
 
   return div
 }
 
-const createPicture = (src) => {
+const createPicture = (src, size) => {
   const img = document.createElement('img')
 
   img.src = src
-  img.srcset = getSrcSet(src)
+  img.srcset = getSrcSet(src, size)
+
+  // TODO: добавить рассчет sizes
+
   img.alt = 'Изображение для карточки'
 
   return img
 }
 
-const getSrcSet = (src) => {
+const IMAGE_SIZES = {
+  s: [112, 224, 336],
+  m: [172, 344, 516],
+  l: [232, 464, 696]
+}
+
+const getSrcSet = (src, size) => {
   src = src.split('.')
-  const fileName = src[0]
+
+  const file = src[0]
   const extension = src[1]
-  return `${fileName}@2x.${extension} 2x, ${fileName}@3x.${extension} 3x`
+
+  const imgSize = IMAGE_SIZES[size]
+
+  return `
+    ${file}.${extension} ${imgSize[0]}w,
+    ${file}@2x.${extension} ${imgSize[1]}w,
+    ${file}@3x.${extension} ${imgSize[2]}w
+  `.replace('\n', '')
 }
