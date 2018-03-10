@@ -52,6 +52,11 @@
   width: 100%;
 }
 
+/* TODO: Как разместить кнопки, чтобы они сдвигались заголовком? */
+.card_size_s .card__pane {
+  display: none;
+}
+
 /* Size S No Image */
 .card_no-image .card__title-container {
   max-height: none;
@@ -108,7 +113,6 @@
 
   display: grid;
   grid-template-columns: repeat(6, 1fr);
-  /* grid-template-rows: auto auto auto; */
 }
 
 .card_size_l .card__title-container {
