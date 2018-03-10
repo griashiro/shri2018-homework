@@ -13,6 +13,11 @@ function App(el) {
 
     this.doors = doors;
 
+    // TODO: Убрать. Добавлено для ручного тестирования. 
+    this.doors[0].enable()
+    this.doors[1].enable()
+    this.doors[2].enable()
+
     /**
      * Callback вызывается в коде двери
      * Тут даем возможность открыть следующие двери
