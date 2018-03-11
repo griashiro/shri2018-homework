@@ -69,6 +69,7 @@ function Door1(number, onUnlock) {
 
     this.hide(...buttons, lockButton);
     this.setEventListeners(this, buttons, _onDown, _onMove, _onUp);
+
     lockButton.addEventListener('pointerup', () => {
         this.unlock();
     })
@@ -79,31 +80,39 @@ function Door1(number, onUnlock) {
 
     function _onMove(e) {
         const buttonId = Number(e.target.dataset.buttonid);
-        const nextButton = buttonId < buttons.length - 1 ? buttonId + 1 : buttonId;
+        const nextButtonId = buttonId + 1;
+        const isNotLastButton = nextButtonId < buttons.length;
+
         const classList = e.target.classList;
 
         if (isActive(e)) {
             classList.add('stairs-riddle__button_active');
             activeButtons[buttonId] = true;
-            buttons[nextButton].classList.remove('stairs-riddle__button_hidden');
+
+            if (isNotLastButton) {
+                buttons[nextButtonId].classList.remove('stairs-riddle__button_hidden');
+            }
 
             if (checkCondition()) {
                 lockButton.classList.remove('stairs-riddle__button_hidden');
             }
         } else {
-            e.target.classList.remove('stairs-riddle__button_active');
+            classList.remove('stairs-riddle__button_active');
             activeButtons[buttonId] = false;
 
-            if (buttonId !== nextButton) {
-                buttons[nextButton].classList.add('stairs-riddle__button_hidden');
+            if (isNotLastButton) {
+                buttons[nextButtonId].classList.add('stairs-riddle__button_hidden');
             }
+
+            lockButton.classList.add('stairs-riddle__button_hidden');
         }
     }
 
-    function _onUp() {
+    function _onUp(e) {
         this.diactive(...buttons);
+        activeButtons[e.target.dataset.buttonid] = false;
         this.collapse(...buttons);
-        this.hide(...buttons);
+        this.hide(...buttons, lockButton);
     }
 
     function isActive(e) {
@@ -178,11 +187,12 @@ Door1.prototype.collapse = function () {
     }
 }
 
-Door1.prototype.diactive = function (buttons) {
+Door1.prototype.diactive = function () {
     for (let i = 0, len = arguments.length; i < len; ++i) {
         arguments[i].classList.remove('stairs-riddle__button_active');
     }
 }
+
 /**
  * @class Door2
  * @augments DoorBase
