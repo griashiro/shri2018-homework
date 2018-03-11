@@ -183,7 +183,7 @@ body {
 }
 
 .stairs-riddle__button {
-    transition-property: height, background-color;
+    transition-property: height, background-color, opacity;
     transition-duration: .3s;
 }
 

@@ -159,13 +159,13 @@ Door1.prototype.setEventListeners = function (self, buttons, onDown, onMove, onU
     buttons.forEach((b) => {
         b.addEventListener('pointerdown', onDown.bind(self));
         b.addEventListener('pointermove', onMove.bind(self));
+        b.addEventListener('pointerleave', onUp.bind(self));
         b.addEventListener('pointerup', onUp.bind(self));
         b.addEventListener('pointercancel', onUp.bind(self));
-        b.addEventListener('pointerleave', onUp.bind(self));
     })
 }
 
-Door1.prototype.hide= function () {
+Door1.prototype.hide = function () {
     const SECOND_BUTTON = 1;
     for (let i = SECOND_BUTTON, len = arguments.length; i < len; ++i) {
         arguments[i].classList.add('stairs-riddle__button_hidden');
