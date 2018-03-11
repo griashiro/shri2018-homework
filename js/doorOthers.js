@@ -70,29 +70,38 @@ function Door1(number, onUnlock) {
     this.setEventListeners(this, buttons, _onDown, _onMove, _onUp);
 
     function _onDown (e) {
-        const target = e.target;
+        const classList = e.target.classList;
 
-        if (target.classList.contains('stairs-riddle__button')) {
-            e.target.classList.add('stairs-riddle__button_pressed');
-        }
-
-        if (canOpenDoor()) {
-            this.unlock();
+        if (classList.contains('stairs-riddle__button')) {
+            classList.add('stairs-riddle__button_pressed');
         }
     }
 
     function _onMove (e) {
+        const buttonId = Number(e.target.dataset.buttonid);
+        const classList = e.target.classList;
+
         if (isActive(e)) {
-            e.target.classList.add('stairs-riddle__button_active');
+            classList.add('stairs-riddle__button_active');
+            activeButtons[buttonId] = true;
+
+            if (buttonId < buttons.length) {
+                buttons[buttonId + 1].classList.remove('stairs-riddle__button_hidden');
+            }
         } else {
             e.target.classList.remove('stairs-riddle__button_active');
+            activeButtons[buttonId] = false;
+
+            if (buttonId < buttons.length) {
+                buttons[buttonId + 1].classList.add('stairs-riddle__button_hidden');
+            }
         }
     }
 
     function _onUp () {
         this.diactiveButtons(buttons);
         this.collapseButtons(buttons);
-        // this.hideButtons(buttons);
+        this.hideButtons(buttons);
     }
 
     function canOpenDoor () {
@@ -103,9 +112,9 @@ function Door1(number, onUnlock) {
 
     function isActive (e) {
         const offsetThreshold = 40;
-        const classStr = e.target.classList.value;
+        const dataset = e.target.dataset;
 
-        const isTopButton = classStr.includes('button_0') || classStr.includes('button_2')
+        const isTopButton = dataset.buttonid == 0 || dataset.buttonid == 2
 
         if (isTopButton) {
             return e.offsetY < offsetThreshold;
