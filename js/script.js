@@ -81,7 +81,8 @@ const addImage = (elem, src, imageSize) => {
 }
 
 const addDescription = (elem, description) => {
-  elem.appendChild(createBlock('card__description', description))
+  const gradient = '<div class="card__gradient"></div>'
+  elem.appendChild(createBlock('card__description', gradient + description))
 }
 
 const addChannel = (elem, channelName) => {
