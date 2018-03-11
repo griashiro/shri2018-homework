@@ -122,10 +122,12 @@ function Door1(number, onUnlock) {
 
         const isTopButton = dataset.buttonid == 0 || dataset.buttonid == 2
 
+        const rect = e.target.getBoundingClientRect();
+
         if (isTopButton) {
-            return e.offsetY < offsetThreshold;
+            return e.clientY < rect.top + offsetThreshold;
         } else {
-            return e.offsetY > e.target.offsetHeight - offsetThreshold;
+            return e.clientY > rect.top + rect.height - offsetThreshold;
         }
     }
 
