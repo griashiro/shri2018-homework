@@ -191,8 +191,13 @@ body {
     height: 100%;
 }
 
-.stairs-riddle__right-position {
+.stairs-riddle__button_active {
     background-color: #FFC503;
+}
+
+.stairs-riddle__button_hidden {
+  pointer-events: none;
+  opacity: 0;
 }
 
 .stairs-riddle {

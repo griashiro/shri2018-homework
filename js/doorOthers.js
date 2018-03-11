@@ -64,20 +64,26 @@ function Door1(number, onUnlock) {
 
     // ==== Напишите свой код для открытия второй двери здесь ====
 
-    const buttons = this.getButtons(...this.getButtonsClasses())
+    const buttons = this.getButtons(...this.getButtonsClasses());
+    this.hideButtons(buttons);
     this.setEventListeners(this, buttons, _onPointerDown, _onPointerUp);
 
-    function _onPointerDown () {
-      console.log('Down');
+    function _onPointerDown (e) {
+        const target = e.target;
+
+        if (target.classList.contains('stairs-riddle__button')) {
+            e.target.classList.add('stairs-riddle__button_pressed');
+        }
     }
 
     function _onPointerUp () {
-      console.log('Up');
+        this.collapseButtons(buttons);
+        this.hideButtons(buttons);
     }
 
     // Для примера дверь откроется просто по клику на неё
     this.popup.addEventListener('click', function() {
-        this.unlock();
+        // this.unlock();
     }.bind(this));
     // ==== END Напишите свой код для открытия второй двери здесь ====
 }
@@ -102,18 +108,30 @@ Door1.prototype.getButtonsClasses = function () {
     for (let i = 0, len = BUTTONS_COUNT; i < len; ++i) {
         buttonsNames.push('.stairs-riddle__button_' + i);
     }
-    buttonsNames.push('.lock__picture')
+    buttonsNames.push('.lock__picture');
 
-    return buttonsNames
+    return buttonsNames;
 }
 
 Door1.prototype.setEventListeners = function (self, buttons, onPointerDown, onPointerUp) {
-    buttons.forEach(function (b) {
+    buttons.forEach((b) => {
         b.addEventListener('pointerdown', onPointerDown.bind(self));
         b.addEventListener('pointerup', onPointerUp.bind(self));
         b.addEventListener('pointercancel', onPointerUp.bind(self));
         b.addEventListener('pointerleave', onPointerUp.bind(self));
-    }.bind(self))
+    })
+}
+
+Door1.prototype.hideButtons = function (buttons) {
+    for (let i = 1, len = buttons.length; i < len; ++i) {
+        buttons[i].classList.add('stairs-riddle__button_hidden');
+    }
+}
+
+Door1.prototype.collapseButtons = function (buttons) {
+    for (let i = 0, len = buttons.length; i < len - 1; ++i) {
+        buttons[i].classList.remove('stairs-riddle__button_pressed');
+    }
 }
 
 /**
