@@ -189,6 +189,7 @@ body {
 
 .stairs-riddle__button_pressed {
     height: 100%;
+    -webkit-touch-callout: none;
 }
 
 .stairs-riddle__button_active {
