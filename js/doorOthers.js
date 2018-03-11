@@ -71,6 +71,7 @@ function Door1(number, onUnlock) {
     this.setEventListeners(this, buttons, _onDown, _onMove, _onUp);
 
     lockButton.addEventListener('pointerup', () => {
+        activeButtons.fill(false);
         this.unlock();
     })
 
