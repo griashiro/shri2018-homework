@@ -65,52 +65,48 @@ function Door1(number, onUnlock) {
     // ==== Напишите свой код для открытия второй двери здесь ====
     const buttons = this.getButtons(...this.getButtonsClasses());
     const activeButtons = Array(buttons.length).fill(false);
+    const lockButton = this.getLockButton();
 
-    // this.hideButtons(buttons);
+    this.hide(...buttons, lockButton);
     this.setEventListeners(this, buttons, _onDown, _onMove, _onUp);
+    lockButton.addEventListener('pointerup', () => {
+        this.unlock();
+    })
 
-    function _onDown (e) {
-        const classList = e.target.classList;
-
-        if (classList.contains('stairs-riddle__button')) {
-            classList.add('stairs-riddle__button_pressed');
-        }
+    function _onDown(e) {
+        e.target.classList.add('stairs-riddle__button_pressed');
     }
 
-    function _onMove (e) {
+    function _onMove(e) {
         const buttonId = Number(e.target.dataset.buttonid);
+        const nextButton = buttonId < buttons.length - 1 ? buttonId + 1 : buttonId;
         const classList = e.target.classList;
 
         if (isActive(e)) {
             classList.add('stairs-riddle__button_active');
             activeButtons[buttonId] = true;
+            buttons[nextButton].classList.remove('stairs-riddle__button_hidden');
 
-            if (buttonId < buttons.length) {
-                buttons[buttonId + 1].classList.remove('stairs-riddle__button_hidden');
+            if (checkCondition()) {
+                lockButton.classList.remove('stairs-riddle__button_hidden');
             }
         } else {
             e.target.classList.remove('stairs-riddle__button_active');
             activeButtons[buttonId] = false;
 
-            if (buttonId < buttons.length) {
-                buttons[buttonId + 1].classList.add('stairs-riddle__button_hidden');
+            if (buttonId !== nextButton) {
+                buttons[nextButton].classList.add('stairs-riddle__button_hidden');
             }
         }
     }
 
-    function _onUp () {
-        this.diactiveButtons(buttons);
-        this.collapseButtons(buttons);
-        this.hideButtons(buttons);
+    function _onUp() {
+        this.diactive(...buttons);
+        this.collapse(...buttons);
+        this.hide(...buttons);
     }
 
-    function canOpenDoor () {
-        return activeButtons.every((val) => {
-            return val;
-        })
-    }
-
-    function isActive (e) {
+    function isActive(e) {
         const offsetThreshold = 40;
         const dataset = e.target.dataset;
 
@@ -121,6 +117,12 @@ function Door1(number, onUnlock) {
         } else {
             return e.offsetY > e.target.offsetHeight - offsetThreshold;
         }
+    }
+
+    function checkCondition() {
+        return activeButtons.every((isActive) => {
+            return isActive;
+        })
     }
     // ==== END Напишите свой код для открытия второй двери здесь ====
 }
@@ -138,6 +140,10 @@ Door1.prototype.getButtons = function () {
     return buttons;
 }
 
+Door1.prototype.getLockButton = function () {
+    return this.popup.querySelector('.lock__picture');
+}
+
 Door1.prototype.getButtonsClasses = function () {
     const BUTTONS_COUNT = 4;
     const buttonsNames = [];
@@ -145,7 +151,6 @@ Door1.prototype.getButtonsClasses = function () {
     for (let i = 0, len = BUTTONS_COUNT; i < len; ++i) {
         buttonsNames.push('.stairs-riddle__button_' + i);
     }
-    buttonsNames.push('.lock__picture');
 
     return buttonsNames;
 }
@@ -160,21 +165,22 @@ Door1.prototype.setEventListeners = function (self, buttons, onDown, onMove, onU
     })
 }
 
-Door1.prototype.hideButtons = function (buttons) {
-    for (let i = 1, len = buttons.length; i < len; ++i) {
-        buttons[i].classList.add('stairs-riddle__button_hidden');
+Door1.prototype.hide= function () {
+    const SECOND_BUTTON = 1;
+    for (let i = SECOND_BUTTON, len = arguments.length; i < len; ++i) {
+        arguments[i].classList.add('stairs-riddle__button_hidden');
     }
 }
 
-Door1.prototype.collapseButtons = function (buttons) {
-    for (let i = 0, len = buttons.length; i < len - 1; ++i) {
-        buttons[i].classList.remove('stairs-riddle__button_pressed');
+Door1.prototype.collapse = function () {
+    for (let i = 0, len = arguments.length; i < len; ++i) {
+        arguments[i].classList.remove('stairs-riddle__button_pressed');
     }
 }
 
-Door1.prototype.diactiveButtons = function (buttons) {
-    for (let i = 0, len = buttons.length; i < len - 1; ++i) {
-        buttons[i].classList.remove('stairs-riddle__button_active');
+Door1.prototype.diactive = function (buttons) {
+    for (let i = 0, len = arguments.length; i < len; ++i) {
+        arguments[i].classList.remove('stairs-riddle__button_active');
     }
 }
 /**
