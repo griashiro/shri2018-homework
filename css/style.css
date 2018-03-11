@@ -132,6 +132,7 @@
   grid-column: span 6;
 
   display: grid;
+  grid-template-rows: auto 1fr;
   grid-template-columns: repeat(6, 1fr);
 }
 
