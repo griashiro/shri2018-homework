@@ -63,14 +63,58 @@ function Door1(number, onUnlock) {
     DoorBase.apply(this, arguments);
 
     // ==== Напишите свой код для открытия второй двери здесь ====
+
+    const buttons = this.getButtons(...this.getButtonsClasses())
+    this.setEventListeners(this, buttons, _onPointerDown, _onPointerUp);
+
+    function _onPointerDown () {
+      console.log('Down');
+    }
+
+    function _onPointerUp () {
+      console.log('Up');
+    }
+
     // Для примера дверь откроется просто по клику на неё
     this.popup.addEventListener('click', function() {
         this.unlock();
     }.bind(this));
     // ==== END Напишите свой код для открытия второй двери здесь ====
 }
+
 Door1.prototype = Object.create(DoorBase.prototype);
 Door1.prototype.constructor = DoorBase;
+
+Door1.prototype.getButtons = function () {
+    const buttons = [];
+
+    for (var i = 0, len = arguments.length; i < len; ++i) {
+        buttons.push(this.popup.querySelector(arguments[i]));
+    }
+
+    return buttons;
+}
+
+Door1.prototype.getButtonsClasses = function () {
+    const BUTTONS_COUNT = 4;
+    const buttonsNames = [];
+
+    for (let i = 0, len = BUTTONS_COUNT; i < len; ++i) {
+        buttonsNames.push('.stairs-riddle__button_' + i);
+    }
+    buttonsNames.push('.lock__picture')
+
+    return buttonsNames
+}
+
+Door1.prototype.setEventListeners = function (self, buttons, onPointerDown, onPointerUp) {
+    buttons.forEach(function (b) {
+        b.addEventListener('pointerdown', onPointerDown.bind(self));
+        b.addEventListener('pointerup', onPointerUp.bind(self));
+        b.addEventListener('pointercancel', onPointerUp.bind(self));
+        b.addEventListener('pointerleave', onPointerUp.bind(self));
+    }.bind(self))
+}
 
 /**
  * @class Door2
