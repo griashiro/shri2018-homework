@@ -80,6 +80,7 @@ function Door1(number, onUnlock) {
         const buttonId = Number(e.target.dataset.buttonid);
         isButtonTransitionEnd[buttonId] = false;
 
+        e.target.releasePointerCapture(e.pointerId);
         e.target.classList.add('stairs-riddle__button_pressed');
     }
 
