@@ -65,10 +65,11 @@ function Door1(number, onUnlock) {
     // ==== Напишите свой код для открытия второй двери здесь ====
     const buttons = this.getButtons(...this.getButtonsClasses());
     const activeButtons = Array(buttons.length).fill(false);
+    const isButtonTransitionEnd = Array(buttons.length).fill(false);
     const lockButton = this.getLockButton();
 
     this.hide(...buttons, lockButton);
-    this.setEventListeners(this, buttons, _onDown, _onMove, _onUp);
+    this.setEventListeners(this, buttons, _onDown, _onMove, _onUp, _onTransitionEnd);
 
     lockButton.addEventListener('pointerup', () => {
         activeButtons.fill(false);
@@ -76,6 +77,9 @@ function Door1(number, onUnlock) {
     })
 
     function _onDown(e) {
+        const buttonId = Number(e.target.dataset.buttonid);
+        isButtonTransitionEnd[buttonId] = false;
+
         e.target.classList.add('stairs-riddle__button_pressed');
     }
 
@@ -85,6 +89,10 @@ function Door1(number, onUnlock) {
         const isNotLastButton = nextButtonId < buttons.length;
 
         const classList = e.target.classList;
+
+        if (!isButtonTransitionEnd[buttonId]) {
+            return;
+        }
 
         if (isActive(e)) {
             classList.add('stairs-riddle__button_active');
@@ -114,6 +122,11 @@ function Door1(number, onUnlock) {
         activeButtons[e.target.dataset.buttonid] = false;
         this.collapse(...buttons);
         this.hide(...buttons, lockButton);
+    }
+
+    function _onTransitionEnd(e) {
+        const buttonId = Number(e.target.dataset.buttonid);
+        isButtonTransitionEnd[buttonId] = true;
     }
 
     function isActive(e) {
@@ -167,13 +180,14 @@ Door1.prototype.getButtonsClasses = function () {
     return buttonsNames;
 }
 
-Door1.prototype.setEventListeners = function (self, buttons, onDown, onMove, onUp) {
+Door1.prototype.setEventListeners = function (self, buttons, onDown, onMove, onUp, onEnd) {
     buttons.forEach((b) => {
         b.addEventListener('pointerdown', onDown.bind(self));
         b.addEventListener('pointermove', onMove.bind(self));
         b.addEventListener('pointerleave', onUp.bind(self));
         b.addEventListener('pointerup', onUp.bind(self));
         b.addEventListener('pointercancel', onUp.bind(self));
+        b.addEventListener('transitionend', onEnd.bind(self));
     })
 }
 
