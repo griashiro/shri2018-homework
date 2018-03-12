@@ -16,5 +16,5 @@ gulp.task('postcss', function () {
 
 gulp.task('watch', function() {
   livereload.listen();
-  gulp.watch('style.css', ['postcss']);
+  gulp.watch('src/style.css', ['postcss']);
 });
