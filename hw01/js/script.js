@@ -69,10 +69,12 @@ const addButtons = (elem) => {
 }
 
 const addTitle = (elem, title, titleColor) => {
-  const div = createBlock('card__title-container')
   const titleElem = createBlock('card__title', title)
   titleElem.style.color = titleColor;
+
+  const div = createBlock('card__title-container')
   div.appendChild(titleElem)
+  
   elem.appendChild(div)
 }
 
@@ -109,8 +111,7 @@ const createPicture = (src, size) => {
 
   img.src = src
   img.srcset = getSrcSet(src, size)
-
-  // TODO: добавить рассчет sizes
+  img.sizes = '(max-width: 650px) 50vw, 100vw';
 
   img.alt = 'Изображение для карточки'
 
