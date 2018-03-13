@@ -4,26 +4,38 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700&amp;subset=cyrillic" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
-  <link rel="icon" type="image/png" href="img/shri-logo.png" />
+  <link rel="stylesheet" href="./css/reset.css">
+  <link rel="stylesheet" href="./css/style.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,700&amp;subset=cyrillic">
+  <link rel="icon" type="image/png" href="img/shri-logo.png">
   <title>ШРИ 2018. Домашние задания.</title>
 </head>
 <body>
   <section class="wrapper">
     <header class="header">
       <div class="header__text">
-        ШРИ 2018. Домашние задания.
+        <span>
+          <span>ШРИ 2018.</span>
+          <wbr>
+          <span class="header__homework">Домашние задания.</span>
+        </span>
       </div>
-      <img src="img/header-image.png" alt="Геометрические фигуры.">
+      <img class="header__image" src="img/header-image.png" alt="Геометрические фигуры.">
+      <hr class="header__line">
     </header>
     <main>
-    <h1>
-      <a href="hw01/index.html">Адаптивная верстка</a>
-    </h1>
-    <h1>
-      <a href="hw02/index.html">Пользовательский ввод</a>
-    </h1>
+      <h1 class="homework">
+        <a class="homework__title"href="hw01/index.html">Адаптивная верстка</a>
+        <p>
+          Реализация адаптивного дизайн ленты статей Яндекс.Дзена.
+        </p>
+      </h1>
+      <h1 class="homework">
+        <a class="homework__title"href="hw02/index.html">Работа с сенсорным пользовательским вводом</a>
+        <p>
+          Реализация пользовательских жестов в рамках игры «Dungeon of Doom»
+        </p>
+      </h1>
     </main>
   </section>
 </body>
