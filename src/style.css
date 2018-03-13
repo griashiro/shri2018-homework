@@ -50,7 +50,7 @@
   &__description {
     position: relative;
     height: 100%;
-    max-height: 160px;
+    max-height: calc((1vw + 3px) * 1.45 * 6);
     overflow: hidden;
     margin-top: 8px;
     font-size: calc(1vw + 3px);
@@ -138,7 +138,7 @@
     }
 
     &__description {
-      max-height: 72px;
+      max-height: calc((1vw + 3px) * 1.45 * 4);
       line-height: 1.45;
       overflow: hidden;
     }
@@ -191,7 +191,7 @@
     }
 
     &__description {
-      max-height: 72px;
+      max-height: calc((1vw + 3px) * 1.45 * 6);
     }
 
     &__pane {
@@ -217,6 +217,14 @@
 
     &__description {
       font-size: calc(1.5vw + 1px);
+    }
+
+    &_size_m &__description {
+      max-height: calc((1.5vw + 1px) * 1.45 * 4);
+    }
+
+    &_no-image &__description {
+      max-height: calc((1.5vw + 1px) * 1.45 * 7);
     }
   }
 }
@@ -279,6 +287,15 @@
       flex-direction: row;
       margin: 0;
     }
+
+    &_size_l &__description,
+    &_size_m &__description {
+      max-height: calc((2vw + 3px) * 1.45 * 4);
+    }
+
+    &_no-image &__description {
+      max-height: calc((2vw + 3px) * 1.45 * 7);
+    }
   }
 }
 
@@ -303,6 +320,15 @@
 
     &_size_s {
       grid-column: span 6;
+    }
+
+    &_size_l &__description,
+    &_size_m &__description {
+      max-height: calc((2vw + 6px) * 1.45 * 4);
+    }
+
+    &_no-image &__description {
+      max-height: calc((2vw + 6px) * 1.45 * 7);
     }
   }
 }
