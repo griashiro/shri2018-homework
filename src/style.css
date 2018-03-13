@@ -201,6 +201,7 @@
   }
 }
 
+
 @media (max-width: 1000px) {
   .content {
     margin: 0 12%;
@@ -329,6 +330,15 @@
 
     &_no-image &__description {
       max-height: calc((2vw + 6px) * 1.45 * 7);
+    }
+  }
+}
+
+@media (min-width: 1400px) {
+  .card {
+    svg {
+      width: 24px;
+      height: 24px;
     }
   }
 }
