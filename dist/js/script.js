@@ -23,7 +23,7 @@ const createDocumentFragment = (dataJSON) => {
 
 const createCard = (cardData) => {
   const card = createBlock(`card card_size_${cardData.size}`)
-  addTitle(card, cardData.title)
+  addTitle(card, cardData.title, cardData.titleColor)
 
   if (cardData.image) {
     addImage(card, cardData.image, cardData.size)
@@ -68,9 +68,11 @@ const addButtons = (elem) => {
     createBlock('card__heart', '<svg><use xlink:href="#s-heart"/></svg>'))
 }
 
-const addTitle = (elem, title) => {
+const addTitle = (elem, title, titleColor) => {
   const div = createBlock('card__title-container')
-  div.appendChild(createBlock('card__title', title))
+  const titleElem = createBlock('card__title', title)
+  titleElem.style.color = titleColor;
+  div.appendChild(titleElem)
   elem.appendChild(div)
 }
 
