@@ -126,6 +126,10 @@ function Door1(number, onUnlock) {
     }
 
     function _onTransitionEnd(e) {
+        if (e.propertyName !== 'height') {
+            return;
+        }
+
         const buttonId = Number(e.target.dataset.buttonid);
         isButtonTransitionEnd[buttonId] = true;
     }
