@@ -1,0 +1,19 @@
+@font-face {
+  font-family: 'PrStart';
+  src: url('PrStart.ttf');
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
+  font-family: 'PrStart';
+}
+
+canvas {
+  width: 100vw;
+  height: 100vh;
+  display: block;
+}
