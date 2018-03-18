@@ -1,15 +1,15 @@
-import WebGLVideo from './WebGLVideo.js'
+import TerminatorVision from './TerminatorVision.js'
 navigator.getUserMedia = getCrossBrowserUserMedia();
 
 const video = document.createElement('video');
 const canvas = document.getElementById("canvas");
 
-const webglVideo = new WebGLVideo(canvas, video);
+const terminatorVision = new TerminatorVision(canvas, video);
 
 let requestID;
 
 function render(time) {
-  webglVideo.drawFrame();
+  terminatorVision.drawFrame();
   requestID = requestAnimationFrame(render);
 }
 
