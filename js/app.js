@@ -1,12 +1,6 @@
 import TerminatorVision from './TerminatorVision.js'
 import T800Interface from './T800Interface.js'
 
-function getCrossBrowserUserMedia () {
-  return navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia
-}
-
-navigator.getUserMedia = getCrossBrowserUserMedia();
-
 const video = document.createElement('video');
 const canvas = document.getElementById("canvas");
 
@@ -19,10 +13,10 @@ function render(time) {
   requestID = requestAnimationFrame(render);
 }
 
-navigator.getUserMedia({
+navigator.mediaDevices.getUserMedia({
   audio: true,
   video: true
-}, successCallback, errorCallback);
+}).then(successCallback).catch(errorCallback);
 
 function successCallback (stream) {
     video.srcObject = stream;
@@ -48,7 +42,7 @@ function successCallback (stream) {
 }
 
 function errorCallback (error) {
-   console.error('Ошибка во при попытке запуска getUserMedia' + err.name);
+   console.error('Ошибка во при попытке запуска getUserMedia' + error.name);
 }
 
 document.addEventListener('visibilitychange', () => {
