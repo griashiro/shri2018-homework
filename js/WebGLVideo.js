@@ -1,6 +1,6 @@
 /*
   Для корректной работы требуется добавить зависимость:
-  <script defer src="https://webglfundamentals.org/webgl/resources/m4.js"></script>
+  https://webglfundamentals.org/webgl/resources/m4.js
 */
 class WebGLVideo {
   constructor (canvasElem, videoElem) {

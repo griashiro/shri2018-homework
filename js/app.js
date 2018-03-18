@@ -1,4 +1,10 @@
 import TerminatorVision from './TerminatorVision.js'
+import T800Interface from './T800Interface.js'
+
+function getCrossBrowserUserMedia () {
+  return navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia
+}
+
 navigator.getUserMedia = getCrossBrowserUserMedia();
 
 const video = document.createElement('video');
@@ -53,6 +59,50 @@ canvas.addEventListener('click', () => {
   video.paused ? video.play() : video.pause();
 });
 
-function getCrossBrowserUserMedia () {
-  return navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia
+function runTerminatorInterface () {
+  setTimeout(() => {
+      createScanner()
+  }, 2000)
+  setInterval(() => {
+    createDigitsInfo()
+  }, 3000)
 }
+
+function createDigitsInfo () {
+  const container = document.querySelector('.digits-info');
+
+  container.innerHTML = ''
+
+  const t800Interface = new T800Interface()
+  t800Interface.createDigitsInfo(container)
+
+  const childElems = [...container.children];
+  childElems.reverse();
+
+  makeVisible(childElems.pop());
+  makeVisible(childElems.pop());
+
+  const showText = () => {
+    if (childElems.length > 0) {
+      setTimeout(() => {
+        makeVisible(childElems.pop());
+        showText();
+      }, 100)
+    }
+  }
+
+  showText();
+}
+
+function makeVisible (elem) {
+  elem.style.visibility = 'visible'
+}
+
+function createScanner() {
+  const container = document.querySelector('.scanner');
+
+  const t800Interface = new T800Interface()
+  t800Interface.createScanner(container)
+}
+
+runTerminatorInterface()

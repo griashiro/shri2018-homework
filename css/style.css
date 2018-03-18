@@ -1,6 +1,8 @@
+@import 'animations.css';
+
 @font-face {
   font-family: 'PrStart';
-  src: url('PrStart.ttf');
+  src: url('../fonts/PrStart.ttf');
 }
 
 body {
@@ -8,12 +10,63 @@ body {
   padding: 0;
 }
 
-h1 {
-  font-family: 'PrStart';
-}
-
 canvas {
-  /* width: 100vw;
-  height: 100vh; */
+  width: 100vw;
+  height: 100vh;
   display: block;
 }
+
+.digits-info {
+    position: absolute;
+    top: 4vmin;
+    left: 5vmin;
+    width: 20vw;
+    height: 70vh;
+    visibility: hidden;
+  }
+
+  .digits-info p {
+    padding: 0;
+    font-size: calc(1.2vmin);
+    line-height: 1.5;
+    font-family: 'PrStart';
+    color: #fff;
+  }
+
+.scanner {
+    position: absolute;
+    bottom: 5vmin;
+    right: 5vmin;
+    width: 30vmin;
+    height: 24vmin;
+  }
+
+  .scanner table {
+    width: 100%;
+    height: 100%;
+    border-collapse: collapse;
+  }
+
+  .scanner td {
+    border: solid 2px #fff;
+  }
+
+  .scanner .horizontal-line {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background-color: #fff;
+    animation: horizontal-move 3s linear infinite;
+  }
+
+  .scanner .vertical-line {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 3px;
+    height: 100%;
+    background-color: #fff;
+    animation: vertical-move 3s linear infinite;
+  }
