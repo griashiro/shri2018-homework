@@ -25,32 +25,42 @@ canvas {
   display: block;
 }
 
-.showtext_animate {
-  animation: showtext steps(var(--elems-count), end) 5s infinite;
+.text {
+  margin-top: var(--margin);
+  padding: 0;
+  font-size: var(--font-size);
+  line-height: var(--line-height);
+  font-family: 'PrStart';
+  color: #fff;
+}
+
+.sinewave {
+  position: absolute;
+  bottom: 5vmin;
+  left: 4vmin;
+  width: 20vw;
+  height: 15vh;
+  border: solid 2px #fff;
+  /* border-radius: 50%; */
 }
 
 .analyser {
     position: absolute;
     top: 4vmin;
     left: 5vmin;
-    width: 20vw;
+    width: 30vw;
     height: calc(var(--elem-height) * 2);
     overflow: hidden;
     will-change: height;
   }
 
-  .analyser div {
-    margin-top: var(--margin);
-    padding: 0;
-    font-size: var(--font-size);
-    line-height: var(--line-height);
-    font-family: 'PrStart';
-    color: #fff;
+  .analyser_animate {
+    animation: showtext steps(var(--elems-count), end) 5s infinite;
   }
 
 .scanner {
     position: absolute;
-    bottom: 5vmin;
+    bottom: calc(var(--elem-height) * 3 + 5vmin);
     right: 5vmin;
     width: 30vmin;
     height: 24vmin;
@@ -86,12 +96,106 @@ canvas {
     animation: vertical-move 3s linear infinite;
   }
 
-.sinewave {
+.scanner-text {
   position: absolute;
+  height: var(--elem-height) * 3;
+  width: 30vmin;
   bottom: 5vmin;
-  left: 4vmin;
-  width: 20vw;
-  height: 15vh;
-  border: solid 2px #fff;
-  border-radius: 20px;
+  right: 5vmin;
 }
+
+.navigator {
+    position: absolute;
+    top: 4vmin;
+    right: 5vmin;
+    width: 20vmin;
+    height: 20vmin;
+  }
+
+  .navigator_rotated {
+    transform: rotate(45deg);
+  }
+
+  .navigator__lines {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+  }
+
+  .navigator .vertical-line {
+    position: absolute;
+    left: 50%;
+    width: 4px;
+    height: 100%;
+    background-color: white;
+    border-radius: 4px;
+    transform: translateX(-50%);
+  }
+
+  .navigator .horizontal-line {
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    height: 4px;
+    background-color: white;
+    border-radius: 4px;
+    transform: translateY(-50%);
+  }
+
+.navigator-text {
+  position: absolute;
+  top: 30vmin;
+  right: 5vmin;
+  width: 20vmin;
+  text-align: center;
+}
+
+.letter {
+    position: absolute;
+  }
+
+  .letter_n {
+    left: 50%;
+    margin: 0;
+    transform: translate(-50%, -100%);
+  }
+
+  .letter_ne {
+    right: 0;
+  }
+
+  .letter_e {
+    top: 50%;
+    right: 0;
+    margin: 0;
+    transform: translate(100%, -50%);
+  }
+
+  .letter_se {
+    bottom: 0;
+    right: 0;
+  }
+
+  .letter_s {
+    left: 50%;
+    bottom: 0;
+    margin: 0;
+    transform: translate(-50%, 100%);
+  }
+
+  .letter_sw {
+    bottom: 0;
+  }
+
+  .letter_w {
+    top: 50%;
+    margin: 0;
+    transform: translate(-100%, -50%);
+  }
+
+  .letter_ne,
+  .letter_se,
+  .letter_sw,
+  .letter_nw {
+    margin: 1vmin;
+  }
