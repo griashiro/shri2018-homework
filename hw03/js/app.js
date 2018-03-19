@@ -33,12 +33,12 @@ function successCallback (stream) {
     conntectSoundAnalyzerTo(stream)
 
     video.onloadedmetadata = function(e) {
+      createTerminatorInterface()
       video.play();
     };
 
     video.onplaying = function() {
       requestID = requestAnimationFrame(render);
-      createTerminatorInterface()
       changeTitleText('play');
     }
 
@@ -109,10 +109,16 @@ canvas.addEventListener('click', () => {
 function createTerminatorInterface () {
   const analyserElem = document.querySelector('.analyser');
   const scannerElem = document.querySelector('.scanner');
+  const scannerTextElem = document.querySelector('.scanner-text');
+  const navigatorElem = document.querySelector('.navigator');
+  const navigatorTextElem = document.querySelector('.navigator-text');
 
   t800Interface.createAnalyser(analyserElem)
-  analyserElem.classList.add('showtext_animate')
+  analyserElem.classList.add('analyser_animate')
 
   t800Interface.createScanner(scannerElem)
+  t800Interface.createScannerText(scannerTextElem)
 
+  t800Interface.createNavigator(navigatorElem)
+  t800Interface.createNavigatorText(navigatorTextElem)
 };
