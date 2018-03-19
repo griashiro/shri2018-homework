@@ -1,3 +1,9 @@
+@keyframes showtext {
+  to {
+    height: calc(var(--elem-height) * var(--elems-count));
+  }
+}
+
 @keyframes horizontal-move {
   0% {
     top: 0;
