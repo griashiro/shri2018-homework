@@ -5,9 +5,18 @@
   src: url('../fonts/PrStart.ttf');
 }
 
+:root {
+  --margin: 1.8vmin;
+  --font-size: 1.2vmin;
+  --line-height: 1.5;
+  --elem-height: (var(--margin) + var(--font-size) * var(--line-height));
+  --elems-count: 18;
+}
+
 body {
   margin: 0;
   padding: 0;
+  background: black;
 }
 
 canvas {
@@ -16,19 +25,25 @@ canvas {
   display: block;
 }
 
-.digits-info {
+.showtext_animate {
+  animation: showtext steps(var(--elems-count), end) 5s infinite;
+}
+
+.analyser {
     position: absolute;
     top: 4vmin;
     left: 5vmin;
     width: 20vw;
-    height: 70vh;
-    visibility: hidden;
+    height: calc(var(--elem-height) * 2);
+    overflow: hidden;
+    will-change: height;
   }
 
-  .digits-info p {
+  .analyser div {
+    margin-top: var(--margin);
     padding: 0;
-    font-size: calc(1.2vmin);
-    line-height: 1.5;
+    font-size: var(--font-size);
+    line-height: var(--line-height);
     font-family: 'PrStart';
     color: #fff;
   }
@@ -70,3 +85,13 @@ canvas {
     background-color: #fff;
     animation: vertical-move 3s linear infinite;
   }
+
+.sinewave {
+  position: absolute;
+  bottom: 5vmin;
+  left: 4vmin;
+  width: 20vw;
+  height: 15vh;
+  border: solid 2px #fff;
+  border-radius: 20px;
+}
