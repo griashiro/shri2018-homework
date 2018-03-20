@@ -5,7 +5,19 @@
   "repository": "https://github.com/griashiro/shri2018-homework",
   "author": "griashiro <griashiro@gmail.com>",
   "license": "MIT",
+  "scripts": {
+    "start": "node app.js",
+    "lint": "eslint --fix . --ext .js"
+  },
   "dependencies": {
     "express": "^4.16.3"
+  },
+  "devDependencies": {
+    "eslint": "^4.19.0",
+    "eslint-config-standard": "^11.0.0",
+    "eslint-plugin-import": "^2.9.0",
+    "eslint-plugin-node": "^6.0.1",
+    "eslint-plugin-promise": "^3.7.0",
+    "eslint-plugin-standard": "^3.0.1"
   }
 }
