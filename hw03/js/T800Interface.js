@@ -5,7 +5,7 @@ class T800Interface {
     this._addElemTo(fragment, 'ANALYSIS', 'text')
     this._addElemTo(fragment, '*********************', 'text')
 
-    const lenesCount = 18;
+    const lenesCount = 18
 
     for (let i = 0; i < lenesCount; ++i) {
       const num1 = this._getRandDigits(6)
@@ -65,14 +65,14 @@ class T800Interface {
     this._addElemTo(container, 'IN PROGRESS...', 'text')
   }
 
-  createNavigatorText(container) {
+  createNavigatorText (container) {
     this._addElemTo(container, 'TARGET FIELD:', 'text')
-    this._addElemTo(container, '**************', 'text');
+    this._addElemTo(container, '**************', 'text')
 
     const randXCoord = `${this._getRandDigits(2)}.${this._getRandDigits(6)}`
     const randYCoord = `${this._getRandDigits(2)}.${this._getRandDigits(6)}`
-    this._addElemTo(container, randXCoord, 'text');
-    this._addElemTo(container, randYCoord, 'text');
+    this._addElemTo(container, randXCoord, 'text')
+    this._addElemTo(container, randYCoord, 'text')
   }
 
   _addElemTo (container, text, className) {
@@ -95,11 +95,11 @@ class T800Interface {
     let strDigit = ''
 
     while (digitsCount--) {
-      strDigit += Math.floor(Math.random() * 10);
+      strDigit += Math.floor(Math.random() * 10)
     }
 
-    return strDigit;
+    return strDigit
   }
 }
 
-export default T800Interface;
+export default T800Interface
