@@ -1,0 +1,11 @@
+{
+  "name": "shri2018-homeworks",
+  "version": "1.0.0",
+  "main": "app.js",
+  "repository": "https://github.com/griashiro/shri2018-homework",
+  "author": "griashiro <griashiro@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.16.3"
+  }
+}
