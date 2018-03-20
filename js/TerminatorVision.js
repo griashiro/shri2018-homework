@@ -11,8 +11,8 @@ class TerminatorVision extends WebGLVideo {
   }
 
   _setRedFilter () {
-    this.gl.colorMask(true, false, false, true);
+    this.gl.colorMask(true, false, false, true)
   }
 }
 
-export default TerminatorVision;
+export default TerminatorVision
