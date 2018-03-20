@@ -3,6 +3,15 @@ const app = express()
 
 const config = require('./config')
 
-app.get('/', (req, res) => res.send('Hello World!'))
+app.set('views', './views')
+app.set('view engine', 'pug')
 
-app.listen(config.PORT, () => console.log(`Server listening on port ${config.PORT}`))
+app.get('/', (req, res) => {
+  res.redirect('/branches')
+})
+
+app.get('/branches', (req, res) => {
+  res.render('branches', { title: 'Hey', message: 'Hello there!' })
+})
+
+app.listen(config.PORT)
