@@ -2,7 +2,7 @@ const express = require('express')
 const router = express.Router()
 
 router.get('*', (req, res) => {
-  res.send('404', 404)
+  res.status(404).send('404')
 })
 
 module.exports = router
