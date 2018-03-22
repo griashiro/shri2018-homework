@@ -2,7 +2,9 @@ const git = require('../helpers/git')
 const cut = require('../helpers/cut')
 
 module.exports = async (branchName) => {
-  let { error, stdout, stderr } = await git('log', `${branchName} --pretty="%h %s"`)
+  const gitArgs = `remotes/origin/${branchName} --pretty="%h %s"`
+
+  let { error, stdout, stderr } = await git('log', gitArgs)
   const commits = stdout
 
   ;({ error, stdout, stderr } = await cut(commits, '1-7'))
