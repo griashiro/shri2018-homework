@@ -3,3 +3,15 @@ html
     title= title
   body
     h1= message
+    
+    ul
+      each val in branches
+        li= val
+        
+    - var hashes = commits.hashes, messages = commits.messages
+    ul
+      each val in hashes
+        li= val
+    ul
+      each val in messages
+        li= val
