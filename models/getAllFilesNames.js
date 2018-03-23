@@ -12,7 +12,8 @@ module.exports = async (treeIsh, path) => {
   const hashes = stdout.trim().split(/\s/)
 
   ;({ error, stdout, stderr } = await cut(bashOutput, '54-'))
-  const files = stdout.trim().split(/\s/)
+  const files = stdout.trim().split(/\n/)
+  console.log(files);
 
   return files.map((file, i) => {
     return {

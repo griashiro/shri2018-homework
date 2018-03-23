@@ -1,6 +1,8 @@
 const express = require('express')
 const router = express.Router()
 
+const urlencode = require('urlencode')
+
 const getAllBranchesNames = require('../models/getAllBranchesNames')
 const getCommitsFrom = require('../models/getCommitsFrom')
 const getAllFilesNames = require('../models/getAllFilesNames')
@@ -16,7 +18,7 @@ router.get('/:branchName', async (req, res, next) => {
 
   const commits = await getCommitsFrom(branchName)
 
-  let path = req.query.path || ''
+  let path = urlencode.decode(req.query.path) || ''
   let files = await getAllFilesNames('remotes/origin/' + branchName, path)
 
   if (path && !files.some(file => file.name === path)) {
@@ -27,19 +29,21 @@ router.get('/:branchName', async (req, res, next) => {
   let content
 
   if (path) {
+    const foo = path.split('/')
+    foo.pop()
+    back = '?path=' + foo.join('/')
+
     if (files[0].type === 'tree') {
-      const foo = path.split('/')
-      foo.pop()
-      back = '?path=' + foo.join('/')
       path += '/'
       files = await getAllFilesNames('remotes/origin/' + branchName, path)
     } else {
-      const foo = path.split('/')
-      foo.pop()
-      back = '?path=' + foo.join('/')
-      console.log(files[0].hash);
       content = await getContentFrom(files[0].hash)
     }
+
+    files = files.map(file => {
+      file.name = file.name.split('/').pop()
+      return file
+    })
   }
 
   res.render('branches', {
