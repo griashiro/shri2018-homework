@@ -1,25 +1,19 @@
 html
-  head
-    title= title
   body
-    h1= message
-    
+    div
+      a(href=backUrl) back
+    ul
+      each file in files
+        li
+          a(href=file.href)= file.name
     ul
       each branch in branches
         li= branch
-        
     ul
       each hash in commits.hashes
         li= hash
     ul
       each message in commits.messages
         li= message
-        
-    div
-      a(href=back) back
-      ul
-        each file in files
-          li
-            a(href=file.href)= file.name
     p= content
-        
+    

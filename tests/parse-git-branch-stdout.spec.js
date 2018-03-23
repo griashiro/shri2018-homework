@@ -1,6 +1,6 @@
 const assert = require('chai').assert
-const parseBranches = require('../helpers/parse-branches')
-const mock = require('./parse-branches.mock')
+const parseBranches = require('../helpers/parse-git-branch-stdout')
+const mock = require('./parse-git-branch-stdout.mock')
 
 describe ('Получить названия веток из вывода git branch --all', () => {
   it ('Массив названий успешно сформирован', () => {
