@@ -4,13 +4,13 @@ const getCommitsFrom = require('./getCommitsFrom')
 const getContentFrom = require('./getContentFrom')
 const getBackUrl = require('../helpers/get-back-url')
 
-module.exports = async (branchName, path) => {
+module.exports = async (branchName, path, commitHash) => {
   const data = {}
 
   data.backUrl = getBackUrl(path)
   data.branches = await getAllBranchesNames()
   data.commits = await getCommitsFrom(branchName)
-  data.files = await getAllFilesNames(branchName, path)
+  data.files = await getAllFilesNames(branchName, path, commitHash)
   data.content = ''
 
   if (data.files.length === 1) {
@@ -18,7 +18,7 @@ module.exports = async (branchName, path) => {
       data.content = await getContentFrom(data.files[0].hash)
     }
     if (data.files[0].type === 'tree') {
-      data.files = await getAllFilesNames(branchName, path + '/')
+      data.files = await getAllFilesNames(branchName, path + '/', commitHash)
     }
   }
 
