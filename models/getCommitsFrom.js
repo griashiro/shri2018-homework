@@ -1,11 +1,13 @@
+const getShellStdOut = require('../helpers/get-shell-std-out')
 const git = require('../helpers/git')
-const sliceMultiline = require('../helpers/slice-multiline')
+
+const sliceCols = require('../helpers/slice-columns')
 
 module.exports = async (branchName) => {
-  const { error, stdout, stderr } = await git.log(branchName)
+  const stdout = await getShellStdOut(git.log(branchName))
 
-  const hashes = sliceMultiline(stdout, 0, 7).split(/\n/)
-  const messages = sliceMultiline(stdout, 8).split(/\n/)
+  const hashes = sliceCols(stdout, 0, 7).split(/\n/)
+  const messages = sliceCols(stdout, 8).split(/\n/)
 
   return {
     hashes, messages
