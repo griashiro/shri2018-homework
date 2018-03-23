@@ -5,13 +5,21 @@ html
     h1= message
     
     ul
-      each val in branches
-        li= val
+      each branch in branches
+        li= branch
         
-    - var hashes = commits.hashes, messages = commits.messages
     ul
-      each val in hashes
-        li= val
+      each hash in commits.hashes
+        li= hash
     ul
-      each val in messages
-        li= val
+      each message in commits.messages
+        li= message
+        
+    div
+      a(href=back) back
+      ul
+        each file in files
+          li
+            a(href=file.href)= file.name
+    p= content
+        
