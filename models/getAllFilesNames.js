@@ -1,19 +1,12 @@
 const gitLsTree = require('../helpers/git-ls-tree')
-const cut = require('../helpers/cut')
+const sliceMultiline = require('../helpers/slice-multiline')
 
 module.exports = async (treeIsh, path) => {
   let { error, stdout, stderr } = await gitLsTree(treeIsh, path)
-  const bashOutput = stdout
 
-  ;({ error, stdout, stderr } = await cut(bashOutput, '8-11'))
-  const types = stdout.trim().split(/\s/)
-
-  ;({ error, stdout, stderr } = await cut(bashOutput, '13-19'))
-  const hashes = stdout.trim().split(/\s/)
-
-  ;({ error, stdout, stderr } = await cut(bashOutput, '54-'))
-  const files = stdout.trim().split(/\n/)
-  console.log(files);
+  const types = sliceMultiline(stdout, 7, 11).split(/\n/)
+  const hashes = sliceMultiline(stdout, 12, 19).split(/\n/)
+  const files = sliceMultiline(stdout, 53).split(/\n/)
 
   return files.map((file, i) => {
     return {

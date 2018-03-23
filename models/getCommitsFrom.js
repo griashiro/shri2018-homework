@@ -1,17 +1,11 @@
-const git = require('../helpers/git')
-const cut = require('../helpers/cut')
+const gitLog = require('../helpers/git-log')
+const sliceMultiline = require('../helpers/slice-multiline')
 
 module.exports = async (branchName) => {
-  const gitArgs = `remotes/origin/${branchName} --pretty="%h %s"`
+  const { error, stdout, stderr } = await gitLog(branchName)
 
-  let { error, stdout, stderr } = await git('log', gitArgs)
-  const commits = stdout
-
-  ;({ error, stdout, stderr } = await cut(commits, '1-7'))
-  const hashes = stdout.trim().split(/\s/)
-
-  ;({ error, stdout, stderr } = await cut(commits, '9-'))
-  const messages = stdout.trim().split(/\n/)
+  const hashes = sliceMultiline(stdout, 0, 7).split(/\n/)
+  const messages = sliceMultiline(stdout, 8).split(/\n/)
 
   return {
     hashes, messages
