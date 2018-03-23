@@ -1,8 +1,8 @@
-const gitLsTree = require('../helpers/git-ls-tree')
+const git = require('../helpers/git')
 const sliceMultiline = require('../helpers/slice-multiline')
 
 module.exports = async (treeIsh, path) => {
-  let { error, stdout, stderr } = await gitLsTree(treeIsh, path)
+  let { error, stdout, stderr } = await git.ls(treeIsh, path)
 
   const types = sliceMultiline(stdout, 7, 11).split(/\n/)
   const hashes = sliceMultiline(stdout, 12, 19).split(/\n/)

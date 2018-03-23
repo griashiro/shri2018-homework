@@ -1,7 +1,7 @@
-const git = require('../helpers/git')
+// const git = require('../helpers/git')
 
 module.exports = async () => {
-  let { error, stdout, stderr } = await git('rev-parse --short HEAD')
+  // let { error, stdout, stderr } = await git('rev-parse --short HEAD')
 
   return stdout.trim().split(/\s/)
 }

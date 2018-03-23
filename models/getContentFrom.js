@@ -1,7 +1,7 @@
-const gitCatFile = require('../helpers/git-cat-file')
+const git = require('../helpers/git')
 
 module.exports = async (hash) => {
-  const { error, stdout, stderr } = await gitCatFile(hash)
+  const { error, stdout, stderr } = await git.cat(hash)
 
   return stdout
 }
