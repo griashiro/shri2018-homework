@@ -1,3 +1,3 @@
-module.exports = (file) => {
-  return '?path=' + file
+module.exports = (brahcnName) => {
+  return `/branches/${brahcnName}`
 }

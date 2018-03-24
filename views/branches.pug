@@ -7,8 +7,9 @@ html
         li
           a(href=file.href)= file.name
     ul
-      each branch in branches
-        li= branch
+      each branchName, i in branches.names
+        li
+          a(href=branches.hrefs[i])= branchName
     ul
       each hash, i in commits.hashes
         li
