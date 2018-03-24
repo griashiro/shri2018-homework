@@ -1,6 +1,3 @@
-module.exports = (files) => {
-  return files.map(file => {
-    file.name = file.name.split('/').pop()
-    return file
-  })
+module.exports = (file) => {
+  return file.split('/').pop()
 }
