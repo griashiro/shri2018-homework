@@ -1,4 +1,4 @@
-const getShellStdOut = require('../helpers/get-shell-std-out')
+const getShellStdOut = require('../helpers/shell').getStdOut
 const git = require('../helpers/git')
 
 module.exports = async (hash) => {

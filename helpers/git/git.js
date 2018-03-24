@@ -1,4 +1,4 @@
-const exec = require('../exec')
+const exec = require('../shell').exec
 const config = require('../../config')
 
 module.exports = async (command, args = '') => {
