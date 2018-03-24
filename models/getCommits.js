@@ -1,7 +1,7 @@
 const getShellStdOut = require('../helpers/shell').getStdOut
 const git = require('../helpers/git')
 
-const sliceCols = require('../helpers/slice-columns')
+const sliceCols = require('../helpers/processing').sliceColumns
 const getCommitUrl = require('../helpers/url').getCommitUrl
 
 module.exports = async (branchName) => {

@@ -1,6 +1,6 @@
-const sliceCols = require('../helpers/slice-columns')
-const removeFullPath = require('../helpers/remove-full-path')
-const getFileUrl = require('../helpers/url').getFileUrl
+const sliceCols = require('./slice-columns')
+const removeFullPath = require('./remove-full-path')
+const getFileUrl = require('../url').getFileUrl
 
 module.exports = (stdout, path) => {
   const types = sliceCols(stdout, 7, 11).split(/\n/)

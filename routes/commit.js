@@ -2,10 +2,10 @@ const express = require('express')
 const router = express.Router()
 
 const getPath = require('../helpers/url').getPath
-const isPathExists = require('../models/isPathExists')
-const isBranchExists = require('../models/isBranchExists')
-const isCommitExists = require('../models/isCommitExists')
-const getData = require('../models/getData')
+const isPathExists = require('../models').isPathExists
+const isBranchExists = require('../models').isBranchExists
+const isCommitExists = require('../models').isCommitExists
+const getData = require('../models').getData
 
 router.get('/:branchName/:commitHash', async (req, res, next) => {
   const path = getPath(req.query.path)

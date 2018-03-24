@@ -1,8 +1,8 @@
 const getShellStdOut = require('../helpers/shell').getStdOut
 const git = require('../helpers/git')
 
-const parseBranches = require('../helpers/parse-git-branch-stdout')
-const sliceCols = require('../helpers/slice-columns')
+const parseBranches = require('../helpers/processing').parseBranches
+const sliceCols = require('../helpers/processing').sliceColumns
 const getBranchUrl = require('../helpers/url').getBranchUrl
 
 module.exports = async () => {

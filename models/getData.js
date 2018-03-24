@@ -1,24 +1,24 @@
-const getAllBranchesNames = require('./getAllBranchesNames')
-const getAllFilesNames = require('./getAllFilesNames')
-const getCommitsFrom = require('./getCommitsFrom')
-const getContentFrom = require('./getContentFrom')
+const getBranches = require('./getBranches')
+const getFiles = require('./getFiles')
+const getCommits = require('./getCommits')
+const getFileContent = require('./getFileContent')
 const getBackUrl = require('../helpers/url').getBackUrl
 
 module.exports = async (branchName, path, commitHash) => {
   const data = {}
 
   data.backUrl = getBackUrl(path)
-  data.branches = await getAllBranchesNames()
-  data.commits = await getCommitsFrom(branchName)
-  data.files = await getAllFilesNames(branchName, path, commitHash)
+  data.branches = await getBranches()
+  data.commits = await getCommits(branchName)
+  data.files = await getFiles(branchName, path, commitHash)
   data.content = ''
 
   if (data.files.length === 1) {
     if (data.files[0].type === 'blob') {
-      data.content = await getContentFrom(data.files[0].hash)
+      data.content = await getFileContent(data.files[0].hash)
     }
     if (data.files[0].type === 'tree') {
-      data.files = await getAllFilesNames(branchName, path + '/', commitHash)
+      data.files = await getFiles(branchName, path + '/', commitHash)
     }
   }
 

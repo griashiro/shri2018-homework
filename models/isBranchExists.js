@@ -1,9 +1,9 @@
 const getShellStdOut = require('../helpers/shell').getStdOut
 const git = require('../helpers/git')
 
-const getAllBranchesNames = require('./getAllBranchesNames')
+const getBranches = require('./getBranches')
 
 module.exports = async (branchName) => {
-  const branches = await getAllBranchesNames()
+  const branches = await getBranches()
   return branches.names.includes(branchName)
 }

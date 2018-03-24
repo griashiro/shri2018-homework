@@ -1,9 +1,9 @@
 const getShellStdOut = require('../helpers/shell').getStdOut
 const git = require('../helpers/git')
 
-const getCommitsFrom = require('./getCommitsFrom')
+const getCommits = require('./getCommits')
 
 module.exports = async (commitHash, branchName) => {
-  const commits = await getCommitsFrom(branchName)
+  const commits = await getCommits(branchName)
   return commits.hashes.includes(commitHash)
 }

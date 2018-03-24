@@ -2,9 +2,9 @@ const express = require('express')
 const router = express.Router()
 
 const getPath = require('../helpers/url').getPath
-const isPathExists = require('../models/isPathExists')
-const isBranchExists = require('../models/isBranchExists')
-const getData = require('../models/getData')
+const isPathExists = require('../models').isPathExists
+const isBranchExists = require('../models').isBranchExists
+const getData = require('../models').getData
 
 router.get('/:branchName', async (req, res, next) => {
   const path = getPath(req.query.path)
