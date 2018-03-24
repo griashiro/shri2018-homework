@@ -13,7 +13,5 @@ module.exports = async (branchName) => {
     return getCommitUrl(branchName, hash)
   })
 
-  return {
-    hashes, hrefs, messages
-  }
+  return { hashes, hrefs, messages }
 }
