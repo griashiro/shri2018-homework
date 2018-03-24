@@ -10,8 +10,9 @@ html
       each branch in branches
         li= branch
     ul
-      each hash in commits.hashes
-        li= hash
+      each hash, i in commits.hashes
+        li
+          a(href=commits.hrefs[i])= hash
     ul
       each message in commits.messages
         li= message
