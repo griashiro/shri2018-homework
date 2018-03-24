@@ -6,7 +6,7 @@ const rootRoute = require('./routes/root')
 const treeRoute = require('./routes/tree')
 const branchRoute = require('./routes/branch')
 const commitRoute = require('./routes/commit')
-const notFoundRoute = require('./routes/notFound')
+const notFoundRoute = require('./routes/page-not-found')
 
 const errorHandler = require('./middleware/errorHandler')
 
