@@ -2,7 +2,7 @@ const getAllBranchesNames = require('./getAllBranchesNames')
 const getAllFilesNames = require('./getAllFilesNames')
 const getCommitsFrom = require('./getCommitsFrom')
 const getContentFrom = require('./getContentFrom')
-const getBackUrl = require('../helpers/get-back-url')
+const getBackUrl = require('../helpers/url').getBackUrl
 
 module.exports = async (branchName, path, commitHash) => {
   const data = {}

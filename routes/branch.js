@@ -1,7 +1,7 @@
 const express = require('express')
 const router = express.Router()
 
-const getPath = require('../helpers/get-path')
+const getPath = require('../helpers/url').getPath
 const isPathExists = require('../models/isPathExists')
 const isBranchExists = require('../models/isBranchExists')
 const getData = require('../models/getData')
