@@ -6,8 +6,9 @@
   "author": "griashiro <griashiro@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "start": "node app.js",
+    "start": "npm run prepare & node app.js",
     "dev": "nodemon app.js",
+    "prepare": "rm -rf data && tar -xf data.tar",
     "test": "mocha tests/*",
     "test-watch": "mocha -w tests/*",
     "lint": "eslint --fix . --ext .js"
