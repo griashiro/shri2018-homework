@@ -13,10 +13,10 @@ module.exports = async (branchName, path, commitHash) => {
   data.commits = await getCommits(branchName)
   data.files = await getFiles(branchName, path, commitHash)
   data.isTopDirectory = isTopDirectory(path)
-  data.content = ''
 
   if (data.files.length === 1) {
-    if (data.files[0].type === 'blob') {
+    if (data.files[0].type === 'blob' && !isTopDirectory(path)) {
+      data.hasContent = true
       data.content = await getFileContent(data.files[0].hash)
     }
     if (data.files[0].type === 'tree') {
