@@ -1,5 +1,5 @@
 const git = require('./git')
 
-module.exports = async (args = '--all') => {
-  return await git('branch', args)
+module.exports = (args = '--all') => {
+  return git('branch', args)
 }
