@@ -9,7 +9,7 @@
     "start": "node app.js",
     "dev": "nodemon app.js",
     "test": "mocha tests/*",
-    "watch": "mocha -w tests/*",
+    "test-watch": "mocha -w tests/*",
     "lint": "eslint --fix . --ext .js"
   },
   "dependencies": {
