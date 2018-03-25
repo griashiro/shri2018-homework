@@ -1,10 +1,12 @@
 sudo: false
 language: node_js
-
 node_js:
-  - 'node'
-  - 9
-
+- node
+- 9
 script:
-  - npm run lint
-  - npm run test
+- npm run lint
+- npm run test
+deploy:
+  provider: heroku
+  api_key:
+    secure: M5PS8W8lG8E3t+rFpejwr3GYraFfBXA0TGkqEq9b+nHgpUDoPMnWNJvTXB/S7ZFh5xTk2terPXYTbVBoSICuQBH5gS6WCyBLKRjxNE9I7PEW9229ODdUzMF3Vj8ldh/fUPmRV07+N9OKgkizq7TULN61Z9vh2uufvBUXqyV4DMRmAid7HfqyGYAenrdhyGhblMcftTjRYVtFDY15Dk2g/weVdq1f21sRyWcaeqZUzk3Op9Kn7AG3RWWjFbhg6yY8v/+3Q4MkfoGa2xUQSlr4kF9K8w7RzOMymAkl0l4UjCF2igH6iKQsL+UZ56jymEMrv5A2hSC26rc6uHIVzxwjkE7UR37jrdqg7N2ZHgxMPx1rUHt2g7j47lYCrmimDusdmlzu/RCBiEkP06CP+bDlBMEJBG4LFxAq4vtjyHUnNJY/d1fZ9kpSsp1c2r47LG5d1Cjy6cgW3nUHGO9Dg1ZTThwlr9HrxKFtM2G0qa9lypThgq+8cI0DCwWOVJQUlvAfKfHDFd+ln7gbDM2Y9/yOuUIDN2pB0h0tUQC1405o4Kwdmc2dAVYoCW/fTH/Anaimg0QUb1wczXf/ifENGdhlGv0Kt51iMDceekvboxT6F9ntsNejf31DXnAWeKh4MlO8HGc7Eo0tqg0+NBAg4Z+wNKL2X8tzCNLno5YCAkuDg44=
