@@ -1,8 +1,8 @@
-const getShellStdOut = require('../helpers/shell').getStdOut
-const git = require('../helpers/git')
+const getShellStdOut = require('../../helpers/shell').getStdOut
+const git = require('../../helpers/git')
 
-const sliceCols = require('../helpers/processing').sliceColumns
-const getCommitUrl = require('../helpers/url').getCommitUrl
+const sliceCols = require('../../helpers/processing').sliceColumns
+const getCommitUrl = require('../../helpers/url').getCommitUrl
 
 module.exports = async (branchName) => {
   const stdout = await getShellStdOut(git.log(branchName))
