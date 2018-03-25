@@ -5,6 +5,7 @@ html
     meta(name='viewport' content='width=device-width, initial-scale=1.0')
     meta(http-equiv='X-UA-Compatible' content='ie=edge')
     link(rel='icon' type='image/png' href='/shri-logo.png')
+    link(rel='stylesheet' href='https://fonts.googleapis.com/css?family=Open+Sans:400,700i&amp;subset=cyrillic')
     link(rel='stylesheet' href='/style.css')
     title Git View
   body
@@ -27,8 +28,8 @@ html
       .page__files
         .page__header
           | Файлы
-        if (!isTopDirectory)
-          .file__back
+        .file__back
+          if (!isTopDirectory)
             a(href=backUrl) назад
         if (hasContent)
           .file__name

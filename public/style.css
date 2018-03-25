@@ -1,0 +1,44 @@
+body {
+  font-size: 14px;
+  line-height: 1.5;
+  font-family: 'Open Sans', sans-serif;
+}
+.page {
+    display: grid;
+    grid-template: 200px auto / 200px auto;
+  }
+  .page__header {
+    margin-bottom: 10px;
+    font-size: 20px;
+    font-weight: bold;
+  }
+  .page__files {
+    margin-left: 50px;
+    grid-row: 1 / -1;
+    grid-column: 2;
+  }
+
+.branch {
+  margin-bottom: 4px;
+}
+
+.commit {
+    margin-bottom: 4px;
+  }
+
+  .commit__message {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+.file__back {
+  height: 21px;
+  margin-bottom: 10px;
+}
+
+.file__content {
+  margin-top: 16px;
+  font-size: 10px;
+  white-space: pre;
+}
