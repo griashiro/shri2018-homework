@@ -8,7 +8,7 @@ const branchRoute = require('./routes/branch')
 const commitRoute = require('./routes/commit')
 const notFoundRoute = require('./routes/page-not-found')
 
-const errorHandler = require('./middleware/errorHandler')
+const errorHandler = require('./middleware/error-handler')
 
 const config = require('./config')
 

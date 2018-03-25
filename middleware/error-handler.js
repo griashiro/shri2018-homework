@@ -3,6 +3,6 @@ module.exports = (err, req, res, next) => {
   //   console.log('Заголовки ушли');
   //   return next(err)
   // }
-
-  // res.send('500', 500)
+  //
+  // res.status(500).send('500')
 }

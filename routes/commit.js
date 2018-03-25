@@ -18,8 +18,6 @@ router.get('/:branchName/:commitHash', async (req, res, next) => {
   }
 
   res.render('branches', await models.getData(branchName, path, commitHash))
-}, (req, res) => {
-  res.status(404).send('404')
 })
 
 module.exports = router
