@@ -1,5 +1,9 @@
 module.exports = async (promise) => {
-  const { error, stdout, stderr } = await promise
-  // TODO: запись ошибок в log
-  return stdout
+  try {
+    const { error, stdout, stderr } = await promise
+    return stdout
+  } catch (e) {
+    // TODO: запись ошибок в log
+    return ''
+  }
 }
