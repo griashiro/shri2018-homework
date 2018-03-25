@@ -1,0 +1,33 @@
+html
+  body
+    .page__branches
+      .page__header
+        | Ветки
+      each branch in branches
+        .branch
+          a(href=branch.href)= branch.name
+    .page__commits
+      .page__header
+        | Коммиты
+      each commit in commits
+        .commit
+          .commit__hash
+            a(href=commit.href)= commit.hash
+          .commit__message
+            = commit.message
+    .page__files
+      .page__header
+        | Файлы
+      if (!isTopDirectory)
+        .file__back
+          a(href=backUrl) назад
+      if (content) 
+        .file__name
+          = files[0].name
+        .file__content
+          = content
+      else 
+        .file__list
+          each file in files
+            .file__name
+              a(href=file.href)= file.name

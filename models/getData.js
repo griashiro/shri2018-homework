@@ -3,6 +3,7 @@ const getFiles = require('./getters/getFiles')
 const getCommits = require('./getters/getCommits')
 const getFileContent = require('./getters/getFileContent')
 const getBackUrl = require('../helpers/url').getBackUrl
+const isTopDirectory = require('../helpers/path').isTopDirectory
 
 module.exports = async (branchName, path, commitHash) => {
   const data = {}
@@ -11,6 +12,7 @@ module.exports = async (branchName, path, commitHash) => {
   data.branches = await getBranches()
   data.commits = await getCommits(branchName)
   data.files = await getFiles(branchName, path, commitHash)
+  data.isTopDirectory = isTopDirectory(path)
   data.content = ''
 
   if (data.files.length === 1) {

@@ -13,5 +13,9 @@ module.exports = async (branchName) => {
     return getCommitUrl(branchName, hash)
   })
 
-  return { hashes, hrefs, messages }
+  const commits = hashes.map((hash, i) => {
+    return { hash, message: messages[i], href: hrefs[i] }
+  })
+
+  return commits
 }

@@ -5,5 +5,5 @@ const getBranches = require('./getters/getBranches')
 
 module.exports = async (branchName) => {
   const branches = await getBranches()
-  return branches.names.includes(branchName)
+  return branches.some(branch => branch.name === branchName)
 }

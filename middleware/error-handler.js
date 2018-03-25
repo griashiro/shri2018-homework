@@ -3,5 +3,7 @@ module.exports = (err, req, res, next) => {
     return next(err)
   }
 
+  console.error(err);
+
   res.status(500).send('500')
 }

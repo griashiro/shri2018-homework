@@ -12,5 +12,9 @@ module.exports = async () => {
     return getBranchUrl(branchName)
   })
 
-  return { names, hrefs }
+  const branches = names.map((name, i) => {
+    return { name, href: hrefs[i] }
+  })
+
+  return branches
 }

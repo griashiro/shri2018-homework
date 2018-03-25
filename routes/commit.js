@@ -2,7 +2,7 @@ const express = require('express')
 const router = express.Router()
 
 const asyncMiddleware = require('../middleware/async-middleware')
-const getPath = require('../helpers/get-path')
+const getPath = require('../helpers/path').getPath
 const models = require('../models')
 
 router.get('/:branchName/:commitHash', asyncMiddleware(async (req, res, next) => {
@@ -15,7 +15,7 @@ router.get('/:branchName/:commitHash', asyncMiddleware(async (req, res, next) =>
   const isCommitOk = await models.isCommitExists(commitHash, branchName)
 
   if (isPathOk && isBranchOk && isCommitOk) {
-    res.render('branches', await models.getData(branchName, path, commitHash))
+    res.render('gui', await models.getData(branchName, path, commitHash))
   } else {
     next()
   }
