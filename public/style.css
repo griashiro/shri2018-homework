@@ -5,7 +5,7 @@ body {
 }
 .page {
     display: grid;
-    grid-template: 200px auto / 200px auto;
+    grid-template: 300px auto / 300px auto;
   }
   .page__header {
     margin-bottom: 10px;
