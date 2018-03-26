@@ -9,7 +9,7 @@
     "start": "npm run prepare & node app.js",
     "dev": "nodemon app.js",
     "prepare": "rm -rf data && tar -xf data.tar",
-    "test": "mocha tests/mocha/*",
+    "test": "nyc mocha tests/mocha/*",
     "test-watch": "mocha -w tests/mocha/*",
     "lint": "eslint --fix . --ext .js"
   },
@@ -21,6 +21,7 @@
     "urlencode": "^1.1.0"
   },
   "devDependencies": {
+    "nyc": "^11.6.0",
     "chai": "^4.1.2",
     "eslint": "^4.19.0",
     "eslint-config-standard": "^11.0.0",
