@@ -21,6 +21,8 @@ html
       .page__commits
         .page__header
           | Коммиты
+        .commit_selected
+          = currentCommit
         each commit in commits
           .commit
             .commit__hash
@@ -34,7 +36,7 @@ html
           if (!isTopDirectory)
             a(href=backUrl) назад
         if (hasContent)
-          .file__name
+          .file_selected
             = files[0].name
           .file__content
             = content

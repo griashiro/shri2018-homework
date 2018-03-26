@@ -8,12 +8,13 @@ const isTopDirectory = require('../helpers/path').isTopDirectory
 module.exports = async (branchName, path, commitHash) => {
   const data = {}
 
-  data.currentBranch = branchName
   data.backUrl = getBackUrl(path)
   data.branches = await getBranches()
   data.commits = await getCommits(branchName)
   data.files = await getFiles(branchName, path, commitHash)
   data.isTopDirectory = isTopDirectory(path)
+  data.currentBranch = branchName
+  data.currentCommit = commitHash || data.commits[0].hash
 
   if (data.files.length === 1) {
     if (data.files[0].type === 'blob' && !isTopDirectory(path)) {
