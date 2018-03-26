@@ -8,6 +8,7 @@ const isTopDirectory = require('../helpers/path').isTopDirectory
 module.exports = async (branchName, path, commitHash) => {
   const data = {}
 
+  data.currentBranch = branchName
   data.backUrl = getBackUrl(path)
   data.branches = await getBranches()
   data.commits = await getCommits(branchName)

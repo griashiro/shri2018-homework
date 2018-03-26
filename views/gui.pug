@@ -13,6 +13,8 @@ html
       .page__branches
         .page__header
           | Ветки
+        .branch_selected
+          = currentBranch
         each branch in branches
           .branch
             a(href=branch.href)= branch.name

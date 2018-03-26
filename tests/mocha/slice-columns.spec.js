@@ -1,5 +1,5 @@
 const assert = require('chai').assert
-const sliceCols = require('../helpers/processing').sliceColumns
+const sliceCols = require('../../helpers/processing').sliceColumns
 const mock = require('./slice-columns.mock')
 
 describe('Вырезать столбцы из многострочного текста', () => {

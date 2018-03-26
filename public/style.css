@@ -22,6 +22,10 @@ body {
   margin-bottom: 4px;
 }
 
+.branch_selected {
+  margin: 12px 0;
+}
+
 .commit {
     margin-bottom: 4px;
   }

@@ -1,5 +1,5 @@
 const assert = require('chai').assert
-const parseBranches = require('../helpers/processing').parseBranches
+const parseBranches = require('../../helpers/processing').parseBranches
 const mock = require('./parse-git-branch-stdout.mock')
 
 describe('Получить названия веток из вывода git branch --all', () => {
