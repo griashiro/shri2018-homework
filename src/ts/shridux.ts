@@ -5,13 +5,14 @@ class Store {
 
   constructor (...reducers: Function[]) {
     this.reducers.push(...reducers)
+    this.initializeState()
   }
 
-  public getState (): Object {
+  public getState = (): any => {
     return this.state
   }
 
-  public subscribe (listener: Function): Function {
+  public subscribe = (listener: Function): Function => {
     const id = this.liteners.push(listener) - 1
 
     return () => {
@@ -19,7 +20,7 @@ class Store {
     }
   }
 
-  public dispatch (action: Object) {
+  public dispatch = (action: Object) => {
     this.updateState(action)
     this.notifyListeners()
   }
@@ -31,9 +32,15 @@ class Store {
       })
   }
 
+  private initializeState () {
+    for (const reducer of this.reducers) {
+      this.state = {...this.state, ...reducer({})}
+    }
+  }
+
   private updateState (action: Object) {
     for (const reducer of this.reducers) {
-      this.state = reducer(this.state, action)
+      this.state = reducer(action, this.state)
     }
   }
 

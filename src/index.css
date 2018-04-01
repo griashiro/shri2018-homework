@@ -1,3 +1,8 @@
+body {
+  font-size: 14px;
+  font-family: sans-serif;
+}
+
 .view-stub {
     width: 50%;
 }
@@ -25,10 +30,33 @@
 
 .view-stub__label {
     width: 483px;
+    min-height: 28px;
     background-color: #ddd;
     color: black;
     padding: 10px 5px;
     line-height: 28px;
+}
+
+@keyframes slide {
+  from {
+    background-position-x:0%;
+  }
+  to {
+    background-position-x:100%;
+  }
+}
+
+.view-stub_animate-progress {
+  pointer-events: none;
+  color: transparent;
+  background: repeating-linear-gradient(-45deg, #D8D8D8,#D8D8D8 20px, #FFD544 20px, #FFD544 40px);
+	background-size: 56px 56px;
+	background-position-x: 0%;
+  animation: slide 2s infinite linear forwards;
+}
+
+.view-stub_valid {
+  background-color: rgba(0, 255, 0, 0.5);
 }
 
 .log {

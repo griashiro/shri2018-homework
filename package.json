@@ -1,11 +1,6 @@
 {
-  "name": "shri2018-homeworks",
-  "version": "1.0.0",
-  "description": "",
   "scripts": {
-    "build": "webpack & cp src/static/* dist",
-    "watch": "webpack --watch",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "cp src/index.* dist & webpack --watch"
   },
   "devDependencies": {
     "ts-loader": "^4.1.0",
