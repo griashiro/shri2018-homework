@@ -1,0 +1,15 @@
+@media (max-width: 650px) {
+  .Card_size_m {
+    grid-column: span 6;
+  }
+
+  .Card_size_m .Card-Description {
+    max-height: calc((2vw + 3px) * 1.45 * 4);
+  }
+}
+
+@media (max-width: 450px) {
+  .Card_size_m .Card-Description {
+    max-height: calc((2vw + 6px) * 1.45 * 4);
+  }
+}

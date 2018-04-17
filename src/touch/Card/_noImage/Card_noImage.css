@@ -1,0 +1,11 @@
+@media (max-width: 650px) {
+  .Card_noImage .Card-Description {
+    max-height: calc((2vw + 3px) * 1.45 * 7);
+  }
+}
+
+@media (max-width: 450px) {
+  .Card_noImage .Card-Description {
+    max-height: calc((2vw + 6px) * 1.45 * 7);
+  }
+}

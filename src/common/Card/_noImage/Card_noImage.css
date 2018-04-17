@@ -1,0 +1,17 @@
+.Card_noImage .Card-Title {
+  overflow: hidden;
+  max-height: none;
+}
+
+.Card_noImage .Card-Pane {
+  display: flex;
+  margin-top: 9px;
+}
+
+.Card_noImage .Card-Channel {
+  margin-right: auto;
+}
+
+.Card_noImage .Card-Dots {
+  margin-right: 18px;
+}

@@ -1,0 +1,5 @@
+@media (max-width: 900px) {
+  .Card_noImage .Card-Description {
+    max-height: calc((1.5vw + 1px) * 1.45 * 7);
+  }
+}

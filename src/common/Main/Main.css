@@ -1,0 +1,8 @@
+.Main {
+  display: grid;
+  grid-gap: 5px;
+  grid-template-columns: repeat(6, 1fr);
+  grid-column-gap: 16px;
+  grid-row-gap: 32px;
+  grid-auto-flow: dense;
+}

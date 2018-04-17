@@ -1,0 +1,11 @@
+@media (max-width: 650px) {
+  .Card_size_s {
+    grid-column: span 3;
+  }
+}
+
+@media (max-width: 450px) {
+  .Card_size_s {
+    grid-column: span 6;
+  }
+}

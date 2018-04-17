@@ -1,0 +1,35 @@
+.Card_size_m {
+  grid-column: span 3;
+}
+
+.Card_size_m .Card-Title {
+  position: relative;
+  max-height: 46px;
+}
+
+.Card_size_m .Card-TitleText {
+  background-color: #fff;
+}
+
+.Card_size_m .Card-Image img {
+  width: 100%;
+}
+
+.Card_size_m .Card-Content {
+  display: flex;
+}
+
+.Card_size_m .Card-Description {
+  max-height: calc((1vw + 3px) * 1.45 * 4);
+  line-height: 1.45;
+  overflow: hidden;
+}
+
+.Card_size_m .Card-Pane {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-left: 8px;
+  padding-bottom: 5px;
+  padding-top: 10px;
+}

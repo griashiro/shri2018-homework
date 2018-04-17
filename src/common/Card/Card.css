@@ -1,0 +1,10 @@
+.Card {
+  position: relative;
+  font-family: 'YS Text', sans-serif;
+}
+
+.Card svg {
+  width: 16px;
+  height: 16px;
+  fill: rgba(211, 211, 211, 1);
+}

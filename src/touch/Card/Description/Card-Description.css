@@ -1,0 +1,11 @@
+@media (max-width: 650px) {
+  .Card-Description {
+    font-size: calc(2vw + 3px);
+  }
+}
+
+@media (max-width: 450px) {
+  .Card-Description {
+    font-size: calc(2vw + 6px);
+  }
+}

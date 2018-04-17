@@ -1,0 +1,13 @@
+@media (max-width: 650px) {
+  .Card-TitleText {
+    max-height: calc((2vw + 7px) * 1.3 * 3);
+    font-size: calc(2vw + 7px);
+  }
+}
+
+@media (max-width: 450px) {
+  .Card-TitleText {
+    max-height: calc((2vw + 10px) * 1.3 * 3);
+    font-size: calc(2vw + 10px);
+  }
+}

@@ -1,0 +1,9 @@
+.Card-Channel {
+  font-weight: bold;
+  font-size: calc(1vw + 3px);
+  line-height: 1.2;
+}
+
+.Card-Heart svg:hover {
+  fill: rgba(211, 0, 0, 0.8);
+}

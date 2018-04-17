@@ -1,0 +1,11 @@
+@media (max-width: 900px) {
+  .Card-TitleText {
+    box-sizing: border-box;
+    overflow: hidden;
+    max-height: calc((1.3vw + 4px) * 1.3 * 3);
+    padding-bottom: 8px;
+    font-weight: bold;
+    font-size: calc(1.3vw + 4px);
+    line-height: 1.3;
+  }
+}
