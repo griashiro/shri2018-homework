@@ -1,5 +1,5 @@
-import React, { Fragment } from 'react';
-import { decl } from 'bem-react-core';
+import React from 'react';
+import { decl, Bem } from 'bem-react-core';
 
 export default decl({
   block: 'Card',
@@ -7,11 +7,9 @@ export default decl({
 
   content({ title }) {
     return (
-      <Fragment>
-        <div className="Card-TitleText">
+        <Bem elem="TitleText">
           {title}
-        </div>
-      </Fragment>
+        </Bem>
     );
   }
 });

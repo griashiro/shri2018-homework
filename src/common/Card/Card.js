@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react';
-import { decl } from 'bem-react-core';
+import { decl, Bem } from 'bem-react-core';
 
 import Title from 'e:Title';
 import Image from 'e:Image';
@@ -10,33 +10,25 @@ export default decl({
   block: 'Card',
 
   mods({ data }) {
-    const mods = {}
-    mods['size'] = data.size
-
-    const noImage = !Boolean(data.image)
-    if (noImage) {
-      mods['noImage'] = true
+    return {
+      size: data.size,
+      noImage: !data.image
     }
-
-    return mods
   },
 
   content({ data }) {
-    const hasImage = Boolean(data.image)
-    const hasDescription = Boolean(data.description)
-
     return (
       <Fragment className="FooBarBaz">
         <Title title={data.title} />
-        {hasImage ? (
+        {data.image ? (
           <Image image={data.image} size={data.size} />
         ) : null}
-        <div className="Card-Content">
-          {hasDescription ? (
+        <Bem elem="Content">
+          {data.description ? (
             <Description description={data.description} />
           ) : null}
           <Pane channel={data.channelName} />
-        </div>
+        </Bem>
       </Fragment>
     );
   }
