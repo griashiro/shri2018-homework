@@ -8,7 +8,6 @@ export default decl({
   content({ description }) {
     return (
       <Fragment>
-        <div className="Card-Gradient" />
         {description}
       </Fragment>
     );

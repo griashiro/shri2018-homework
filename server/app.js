@@ -5,23 +5,15 @@ const app = express()
 
 const PORT = process.env.PORT || 3000
 
-const desktop = path.join(__dirname, '../build/desktop.html')
-const touch = path.join(__dirname, '../build/touch.html')
-
 app.get('/', (req, res) => {
-  const deviceType = device(req.get('User-Agent')).type
+  const deviceType = device(req.get('User-Agent')).type === 'desktop' ?
+    'desktop' : 'touch'
 
-  if (deviceType === 'desktop') {
-    console.log('desktop');
-    res.sendFile(desktop)
-    return
-  }
-
-  console.log('mobile');
-  res.sendFile(touch)
+  console.log(deviceType);
+  res.sendFile(path.join(__dirname, '..', 'build', deviceType + '.html'));
 })
 
-app.use(express.static(path.join(__dirname, '../build')))
+app.use(express.static(path.join(__dirname, '..', 'build')))
 
 app.get('*', (req, res) => {
   res.status(404).send('404')

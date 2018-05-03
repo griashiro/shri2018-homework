@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import { decl } from 'bem-react-core';
 
 export default decl({
@@ -22,12 +22,8 @@ export default decl({
   },
 
   content({ image, size }) {
-    return (
-      <Fragment>
-        <img src={image}
-             srcset={this.getSrcSet(image, size)}
-             sizes="(max-width: 650px) 50vw, 100vw" alt="Изображение для карточки" />
-      </Fragment>
-    );
+    return <img src={image}
+      srcset={this.getSrcSet(image, size)}
+      sizes="(max-width: 650px) 50vw, 100vw" alt="Изображение для карточки" />;
   }
 });
